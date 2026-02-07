@@ -25,3 +25,68 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@media screen and (max-width: 1024px) {
+  .hero {
+    min-height: 1100px;
+  }
+  .heroContent {
+    padding: 20px !important;
+  }
+  .backgroundBg {
+    left: 150px !important;
+  }
+  .pointCards {
+    transform: scale(0.8) !important;
+  }
+  .pointCard {
+    transform: scale(0.9) !important;
+  }
+  .caseStudy img {
+    max-width: 150% !important;
+  }
+  .itemDescription {
+    left: 50% !important;
+    transform: translate(-50%) !important;
+    margin-left: 0px !important;
+    bottom: 4% !important;
+  }
+  .desktopNavigation {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .desktopNavigation {
+    display: block;
+  }
+  .mobileNavigation {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .sectionHeader {
+    padding: 10px 24px;
+  }
+  .pointSection {
+    height: auto;
+  }
+  .backgroundBg {
+    position: relative;
+    left: 50% !important;
+    width: 90%;
+    transform: translate(-50%);
+    margin-bottom: 60px;
+  }
+
+  .sectionHeader.cta {
+    margin-bottom: 50px;
+  }
+  .pointCards {
+    transform: scale(1) !important;
+  }
+  .pointCard {
+    transform: scale(1) !important;
+  }
+}
