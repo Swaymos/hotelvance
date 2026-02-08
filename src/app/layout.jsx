@@ -2,6 +2,8 @@
 import Head from "next/head";
 import "./globals.css";
 import { Outfit } from "next/font/google";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const outfit = Outfit({ subsets: ["latin"], display: "swap" });
 
@@ -57,7 +59,9 @@ export default function RootLayout({ children }) {
       <body
         className={`bg-white text-gray-900 antialiased ${outfit.className}`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
