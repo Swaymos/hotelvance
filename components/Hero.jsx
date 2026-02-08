@@ -51,7 +51,6 @@ export default function Hero() {
         >
           Smart Hotel Technology. Designed for Exceptional Guest Experiences.
         </motion.h1>
-
         {/* Paragraph 1 */}
         <motion.p
           variants={fadeUp}
@@ -65,7 +64,7 @@ export default function Hero() {
           "
         >
           Hotevance Limited delivers premium smart technology solutions tailored
-          for 4–5 star hotels that demand flawless performance, elegant design,
+          for 3–5 star hotels that demand flawless performance, elegant design,
           and dependable support. We design, install, and manage hotel Wi-Fi,
           GPON fiber networks, IPTV, VoIP phones, automation, and integrated
           guest systems that enhance comfort, protect your brand reputation, and
@@ -84,12 +83,26 @@ export default function Hero() {
             leading-relaxed
           "
         >
-          Trusted by hotels across Abuja, Lagos, and major cities in Nigeria,
-          Hotevance partners with hotel owners and operators to deliver
-          technology that works seamlessly — quietly supporting world-class
-          hospitality.
+          We delivers integrated smart hotel technology, networking, automation,
+          security, and guest system built to international hospitality
+          standards
         </motion.p>
-
+        <motion.p
+          variants={fadeUp}
+          className="
+            mt-5
+            text-white/80
+            text-[15px]
+            sm:text-[16px]
+            md:text-[18px]
+            leading-relaxed
+          "
+        >
+          Trusted by hotels across Abuja, Lagos, and major cities in Nigeria &
+          Beyond Hotevance partners with hotel owners and operators to deliver
+          premium technology that works seamlessly — quietly supporting
+          world-class hospitality.
+        </motion.p>
         {/* CTA */}
         <motion.button
           variants={fadeUp}
