@@ -40,9 +40,9 @@ export default function Navbar() {
         </div>
 
         <nav className="hidden md:flex gap-8 text-sm text-white/80  text-[16px]">
-          <a href="#">Services</a>
-          <a href="#">Case Studies</a>
-          <a href="#">Contact</a>
+          <a href="/services">Services</a>
+          <a href="/case-studies">Case Studies</a>
+          <a href="/contact">Contact</a>
         </nav>
 
         <button className="bg-primary text-white px-4 py-4 rounded-[10px] text-[16px]">
