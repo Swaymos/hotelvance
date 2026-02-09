@@ -1,7 +1,12 @@
+import hotelAbuja from "../public/hotels/hotel-abuja.png";
+import hotelAbuja2 from "../public/hotels/hotel-abuja2.png";
+import hotelLagos from "../public/hotels/hotel-lagos.png";
+
 export const caseStudies = [
     {
         id: "new-hotel-development-abuja",
         title: "New Hotel Development – Abuja",
+        image: hotelAbuja,
         location: "Abuja, Nigeria",
         projectType: "Technology Design & Pre-Construction Consulting",
         projectStage: "New-build hotel (pre-opening)",
@@ -31,6 +36,7 @@ export const caseStudies = [
 
     {
         id: "international-business-hotel-africa",
+        image: hotelAbuja2,
         title: "International Business Hotel – Africa Region",
         location: "Africa (Multi-country)",
         projectType: "Technology Audit & Upgrade Roadmap",
@@ -57,6 +63,7 @@ export const caseStudies = [
 
     {
         id: "serviced-apartments-lagos",
+        image: hotelLagos,
         title: "Serviced Apartments – Lagos",
         location: "Lagos, Nigeria",
         projectType: "FTTH / GPON & Smart Living Infrastructure",
@@ -83,6 +90,7 @@ export const caseStudies = [
     {
         id: "airport-hotel-lagos",
         title: "Airport Hotel – Lagos, Nigeria",
+        image: hotelAbuja,
         location: "Lagos, Nigeria",
         projectType: "High-Availability Network & Business Guest Connectivity",
         hotelProfile:
@@ -112,6 +120,7 @@ export const caseStudies = [
     {
         id: "boutique-hotel-lagos",
         title: "Boutique Hotel – Lagos, Nigeria",
+        image: hotelLagos,
         location: "Lagos, Nigeria",
         projectType: "IPTV & Guest Room Entertainment System",
         hotelSize: "40 rooms | Leisure & short-stay guests",

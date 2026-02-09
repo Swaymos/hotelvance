@@ -26,6 +26,28 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.caseChallenge {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.caseStudyMeta {
+  padding-bottom: 40px;
+  padding-top: 30px;
+}
+
+.outcome {
+  padding-top: 30px;
+}
+
+.resultIcon {
+  margin-right: 10px;
+}
+
+.navcard {
+  padding-top: 40px;
+}
+
 @media screen and (max-width: 1024px) {
   .hero {
     min-height: 1100px;

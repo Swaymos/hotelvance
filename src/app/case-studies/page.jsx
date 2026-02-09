@@ -15,20 +15,9 @@ import gpon from "../../../public/svg/gpon.svg";
 import wifi from "../../../public/svg/enterprise.svg";
 import voip from "../../../public/svg/voip.svg";
 import chat from "../../../public/svg/chat.svg";
-import hotelAbuja from "../../../public/hotels/hotel-abuja.png";
-import hotelAbuja2 from "../../../public/hotels/hotel-abuja2.png";
-import hotelLagos from "../../../public/hotels/hotel-lagos.png";
 import SectionHeader from "../../../components/SectionHeader";
 import Link from "next/link";
-
-const caseStudy = [
-  {
-    title: "New Hotel Development – Abuja",
-    projectType: "Technology Design & Pre-Construction Consulting",
-    link: "/",
-    image: hotelAbuja,
-  },
-];
+import { caseStudies } from "../../../data/caseStudies";
 
 const specialty = [
   {
@@ -239,7 +228,7 @@ export default function CaseStudyPage() {
             variants={stagger}
             className="mt-16 grid gap-8 md:grid-cols-3"
           >
-            {caseStudy.map((item, i) => (
+            {caseStudies.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
@@ -252,7 +241,10 @@ export default function CaseStudyPage() {
                   <p className="text-[18px] text-gray-600 mt-2 mb-2">
                     {item.projectType}
                   </p>
-                  <Link className="hover:text-primary" href={item.link}>
+                  <Link
+                    className="hover:text-primary"
+                    href={`/case-studies/${item.id}`}
+                  >
                     View Case Study <span></span>
                   </Link>
                 </div>
