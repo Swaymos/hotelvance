@@ -4,6 +4,7 @@ import "./globals.css";
 import { Outfit } from "next/font/google";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import MobileNavbar from "../../components/MobileNavbar";
 
 const outfit = Outfit({ subsets: ["latin"], display: "swap" });
 
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
         className={`bg-white text-gray-900 antialiased ${outfit.className}`}
       >
         <Navbar />
+        <MobileNavbar />
         {children}
         <Footer />
       </body>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ctaBg from "../public/images/cta-bg.jpg";
 import { fadeUp } from "../lib/motion";
+import Link from "next/link";
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -64,23 +65,16 @@ export default function CTA() {
         <div className="relative z-10 max-w-[700px] mx-auto px-6 py-16 text-center">
           <h2 className="text-white text-xl md:text-2xl font-medium leading-relaxed mb-8">
             Schedule a free Wi-Fi and network audit today and discover
-            <br className="hidden md:block" />
+            <br className="hidden md:block sm:text-sm" />
             how Hotevance can upgrade your hotel infrastructure.
           </h2>
 
-          <form className="mx-auto flex w-full max-w-xl flex-col sm:flex-row items-stretch gap-3 bg-white rounded-xl p-2">
-            <input
-              type="email"
-              placeholder="Your Email Address"
-              className="flex-1 px-4 py-3 text-sm text-gray-700 placeholder-gray-400 outline-none rounded-lg"
-            />
-            <button
-              type="submit"
-              className="rounded-lg bg-violet-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-700"
-            >
-              Get Started
-            </button>
-          </form>
+          <Link
+            href="https://wa.link/pn4i7u"
+            className="rounded-lg bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-700"
+          >
+            Book a Free Hotel Technology Audit
+          </Link>
         </div>
       </motion.section>
     </>

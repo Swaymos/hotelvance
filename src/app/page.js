@@ -10,14 +10,11 @@ import ServicesShowcase from "../../components/ServicesShowcase";
 export default function Home() {
   return (
     <>
-      <MobileNavbar />
-      <Navbar />
       <Hero />
       <ServicesShowcase />
       <CaseStudies />
       <Process />
       <CTA />
-      <Footer />
     </>
   );
 }

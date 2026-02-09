@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 import logo from "../public/svg/logo-primary.svg";
+import Link from "next/link";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -36,18 +37,29 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
         <div className="text-white font-bold">
           {" "}
-          <Image src={logo} />
+          <Link href="/">
+            <Image src={logo} />
+          </Link>
         </div>
 
-        <nav className="hidden md:flex gap-8 text-sm text-white/80  text-[16px]">
-          <a href="/services">Services</a>
-          <a href="/case-studies">Case Studies</a>
-          <a href="/contact">Contact</a>
+        <nav className="hidden md:flex gap-8 text-[18px] text-white/80   text-[16px]">
+          <a className="hover:text-primary" href="/services">
+            Services
+          </a>
+          <a className="hover:text-primary" href="/case-studies">
+            Case Studies
+          </a>
+          <a className="hover:text-primary" href="/contact">
+            Contact
+          </a>
         </nav>
 
-        <button className="bg-primary text-white px-4 py-4 rounded-[10px] text-[16px]">
+        <Link
+          href="https://wa.link/pn4i7u"
+          className="rounded-lg bg-primary px-6 py-3 text-[16px]  hover:opacity-90 text-white transition "
+        >
           Hire Hotevance
-        </button>
+        </Link>
       </div>
     </motion.header>
   );

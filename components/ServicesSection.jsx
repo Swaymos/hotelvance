@@ -22,6 +22,7 @@ export default function ServiceSection({
   bullets,
   secondaryTitle,
   secondaryBullets,
+  href,
   cta,
   image,
   imageAlt,
@@ -98,7 +99,7 @@ export default function ServiceSection({
           {/* CTA */}
           <motion.div variants={ctaFade}>
             <Link
-              href="/contact"
+              href={href}
               className="
                 inline-block
                 mt-8 sm:mt-10

@@ -9,9 +9,9 @@ import hamburger from "../public/svg/hamburger.svg";
 import logo from "../public/svg/logo-dark.svg";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/services" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const menuVariants = {
@@ -90,15 +90,15 @@ export default function MobileNavbar() {
             </div>
 
             {/* Links */}
+            <nav className="hidden md:flex gap-8 text-sm text-white/80  text-[16px]">
+              <a href="/services">Services</a>
+              <a href="/case-studies">Case Studies</a>
+              <a href="/contact">Contact</a>
+            </nav>
             <motion.ul className="mt-[0px] px-[40px] pt-[40px] pb-[40px] flex flex-col items-center gap-8 text-[34px] font-medium text-gray-800 bg-white">
               {navLinks.map((link) => (
                 <motion.li key={link.href} variants={itemVariants}>
-                  <button
-                    onClick={() => handleScroll(link.href)}
-                    className="transition hover:text-violet-600"
-                  >
-                    {link.label}
-                  </button>
+                  <a href={link.href}>{link.label}</a>
                 </motion.li>
               ))}
             </motion.ul>

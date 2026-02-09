@@ -1,3 +1,4 @@
+import CTA from "../../../components/CTA";
 import SectionHeader from "../../../components/SectionHeader";
 import ServiceSection from "../../../components/ServicesSection";
 import wifiImg from "../../../public/images/cta-bg.jpg";
@@ -12,6 +13,7 @@ export default function ServicesPage() {
       />
 
       <ServiceSection
+        href="https://wa.link/pn4i7u"
         eyebrow="Hotel Wi-Fi & Networking"
         title="Hotel Wi-Fi That Performs Under Pressure"
         subtitle="Designed for Guests. Engineered for Operations."
@@ -62,7 +64,9 @@ export default function ServicesPage() {
         image={gponImg}
         imageAlt="Fiber optic GPON infrastructure"
         reverse
+        href="https://wa.link/pn4i7u"
       />
+      <CTA />
     </main>
   );
 }
