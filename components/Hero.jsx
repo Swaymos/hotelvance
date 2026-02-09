@@ -119,7 +119,7 @@ export default function Hero() {
             font-medium
           "
         >
-          Book a Free Hotel Wi-Fi & Network Audit
+          Book a Free Hotel Technology Audit
         </motion.button>
       </motion.div>
     </section>
