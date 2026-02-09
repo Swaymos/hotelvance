@@ -38,7 +38,7 @@ export default function Navbar() {
         <div className="text-white font-bold">
           {" "}
           <Link href="/">
-            <Image src={logo} />
+            <Image src={logo} width={200} height={100} alt="logo" />
           </Link>
         </div>
 

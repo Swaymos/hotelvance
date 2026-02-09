@@ -124,7 +124,12 @@ export default function Process() {
                 pointCard
               `}
               >
-                <Image src={service.image} />
+                <Image
+                  src={service.image}
+                  width={50}
+                  height={50}
+                  alt="service image"
+                />
                 <h3 className="text-[22px] font-semibold mb-2">
                   {service.title}
                 </h3>

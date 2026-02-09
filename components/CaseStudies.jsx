@@ -73,7 +73,7 @@ export default function CaseStudies() {
                 whileHover={{ scale: 1.03 }}
                 className="h-[500px] caseStudy  rounded-2xl overflow-hidden  shadow-sm  relative"
               >
-                <Image src={item.image} />
+                <Image src={item.image} fill alt="case study image" />
                 <div className="p-6 itemDescription   backdrop-blur-md bg-white/80 absolute bottom-[55px] rounded-[6px] w-[94%] left-[50%] ml-[-184px]">
                   <h3 className="text-[22px] font-semibold">{item.title}</h3>
                   <p className="text-[16px] text-gray-600 mt-2">

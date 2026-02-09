@@ -55,7 +55,7 @@ export default function MobileNavbar() {
           aria-label="Open menu"
           className="inline-flex flex-col justify-center gap-1.5 rounded-lg p-2 hover:bg-gray-100"
         >
-          <Image src={hamburger} width={50} height={50} />
+          <Image src={hamburger} width={50} height={50} alt="hamburger icon" />
         </button>
       </nav>
 
@@ -85,7 +85,7 @@ export default function MobileNavbar() {
                 aria-label="Close menu"
                 className="pt-[12px] pr-[18px]"
               >
-                <Image src={close} width={40} height={40} />
+                <Image src={close} width={40} height={40} alt="close icon" />
               </button>
             </div>
 

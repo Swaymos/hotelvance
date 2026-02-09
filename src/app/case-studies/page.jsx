@@ -152,7 +152,12 @@ export default function CaseStudyPage() {
                 text-[#3C3B41]
               `}
                 >
-                  <Image src={service.image} />
+                  <Image
+                    src={service.image}
+                    width={40}
+                    height={40}
+                    alt="service image"
+                  />
                   <h3 className="text-[22px] font-semibold mb-2">
                     {service.title}
                   </h3>
@@ -235,7 +240,7 @@ export default function CaseStudyPage() {
                 whileHover={{ scale: 1.03 }}
                 className="h-[500px] caseStudy  rounded-2xl overflow-hidden  shadow-sm  relative"
               >
-                <Image src={item.image} />
+                <Image src={item.image} fill alt="image" />
                 <div className="p-6 itemDescription   backdrop-blur-md bg-white/80 absolute bottom-[55px] rounded-[6px] w-[94%] left-[50%] ml-[-184px]">
                   <h3 className="text-[22px] font-semibold">{item.title}</h3>
                   <p className="text-[18px] text-gray-600 mt-2 mb-2">

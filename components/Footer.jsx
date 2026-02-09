@@ -90,7 +90,7 @@ export default function Footer() {
               >
                 <span className="text-primary">
                   {" "}
-                  <Image src={mailIcon} width={30} height={30} />
+                  <Image src={mailIcon} width={30} height={30} alt="icon" />
                 </span>
                 hello@hotevance.com
               </a>
@@ -103,7 +103,7 @@ export default function Footer() {
                 {" "}
                 <span className="text-primary text-[18px]">
                   {" "}
-                  <Image src={phoneIcon} width={30} height={30} />
+                  <Image src={phoneIcon} width={30} height={30} alt="icon" />
                 </span>
                 +234-706-383-0062
               </a>
@@ -111,7 +111,7 @@ export default function Footer() {
             <li className="flex items-start text-[18px] gap-3">
               <p className="flex items-center gap-3 hover:text-primary">
                 <span className="text-primary mt-1">
-                  <Image src={locationIcon} width={30} height={30} />
+                  <Image src={locationIcon} width={30} height={30} alt="logo" />
                 </span>
                 Suite 320 Rock of Ages Mall, Utako, Abuja
               </p>

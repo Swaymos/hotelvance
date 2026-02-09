@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
-import { caseStudies } from "../../../../data/caseStudies";
-import CaseStudyClient from "./CaseStudyClient";
 import SectionHeader from "../../../../components/SectionHeader";
 import CTA from "../../../../components/CTA";
+import CaseStudyClient from "./caseStudyClient";
+import { caseStudies } from "../../../../data/caseStudies";
 
 /* ---------- SEO METADATA ---------- */
 export async function generateMetadata({ params }) {
-  const study = caseStudies.find((item) => item.id === params.id);
+  const { id } = await params;
+
+  const study = caseStudies.find((item) => item.id === id);
 
   if (!study) {
     return {
@@ -26,21 +28,25 @@ export async function generateMetadata({ params }) {
 }
 
 /* ---------- PAGE ---------- */
-export default function CaseStudyPage({ params }) {
-  const study = caseStudies.find((item) => item.id === params.id);
+export default async function CaseStudyPage({ params }) {
+  const { id } = await params;
+
+  const study = caseStudies.find((item) => item.id === id);
 
   if (!study) return notFound();
 
-  const index = caseStudies.findIndex((i) => i.id === params.id);
+  const index = caseStudies.findIndex((item) => item.id === id);
 
   return (
     <>
-      <SectionHeader title={study.title} subtitle={study.challenge} />
+      <SectionHeader title={study.title} subtitle="Project Overview" />
+
       <CaseStudyClient
         study={study}
-        prevCase={caseStudies[index - 1]}
-        nextCase={caseStudies[index + 1]}
+        prevCase={caseStudies[index - 1] ?? null}
+        nextCase={caseStudies[index + 1] ?? null}
       />
+
       <CTA />
     </>
   );

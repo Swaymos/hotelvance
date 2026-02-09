@@ -139,7 +139,12 @@ export default function ServicesShowcase() {
                 text-[#3C3B41]
               `}
               >
-                <Image src={service.image} />
+                <Image
+                  src={service.image}
+                  width={60}
+                  height={60}
+                  alt="service image"
+                />
                 <h3 className="text-[22px] font-semibold mb-2">
                   {service.title}
                 </h3>
