@@ -84,26 +84,26 @@ export default function Footer() {
             <li className="">
               <a
                 className="flex items-center gap-3 hover:text-primary"
-                href="mailto:hello@hotevance.com"
+                href="mailto:wecare@hotevance.com"
               >
                 <span className="text-primary">
                   {" "}
                   <Image src={mailIcon} width={30} height={30} alt="icon" />
                 </span>
-                hello@hotevance.com
+                wecare@hotevance.com
               </a>
             </li>
             <li className="">
               <a
                 className="flex items-center gap-3 hover:text-primary"
-                href="tel:+2347063830062"
+                href="tel:+2349085444555"
               >
                 {" "}
                 <span className="text-primary text-[18px]">
                   {" "}
                   <Image src={phoneIcon} width={30} height={30} alt="icon" />
                 </span>
-                +234-706-383-0062
+                +2349085444555
               </a>
             </li>
             <li className="flex items-start text-[18px] gap-3">
