@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import { fadeUp } from "../lib/motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -49,7 +50,8 @@ export default function Hero() {
             lg:text-[56px]
           "
         >
-          Smart Hotel Technology. Designed for Exceptional Guest Experiences.
+          Integrated Smart Hotel Technology, Engineered for Reliable Guest
+          Experiences
         </motion.h1>
         {/* Paragraph 1 */}
         <motion.p
@@ -63,12 +65,9 @@ export default function Hero() {
             leading-relaxed
           "
         >
-          Hotevance Limited delivers premium smart technology solutions tailored
-          for 3–5 star hotels that demand flawless performance, elegant design,
-          and dependable support. We design, install, and manage hotel Wi-Fi,
-          GPON fiber networks, IPTV, VoIP phones, automation, and integrated
-          guest systems that enhance comfort, protect your brand reputation, and
-          elevate guest satisfaction.
+          Hotevance designs, deploys, and supports end-to-end hotel technology
+          systems — Wi-Fi, GPON, IPTV, VoIP, security, automation, and PMS
+          integration — built to international hospitality standards.
         </motion.p>
 
         {/* Paragraph 2 */}
@@ -87,40 +86,22 @@ export default function Hero() {
           security, and guest system built to international hospitality
           standards
         </motion.p>
-        <motion.p
-          variants={fadeUp}
-          className="
-            mt-5
-            text-white/80
-            text-[15px]
-            sm:text-[16px]
-            md:text-[18px]
-            leading-relaxed
-          "
-        >
-          Trusted by hotels across Abuja, Lagos, and major cities in Nigeria &
-          Beyond Hotevance partners with hotel owners and operators to deliver
-          premium technology that works seamlessly — quietly supporting
-          world-class hospitality.
-        </motion.p>
+
         {/* CTA */}
-        <motion.button
-          variants={fadeUp}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className="
-            mt-8 sm:mt-10
-            inline-flex items-center justify-center
-            bg-primary
-            px-6 sm:px-8
-            py-4 sm:py-5
-            rounded-[10px]
-            text-sm sm:text-base
-            font-medium
-          "
-        >
-          Book a Free Hotel Technology Audit
-        </motion.button>
+        <div className="flex flex-wrap justify-start mt-[40px]">
+          <Link
+            href="https://wa.link/pn4i7u"
+            className="bg-primary text-white px-8 py-4 rounded-xl font-medium"
+          >
+            Book a Free Hotel Technology Audit
+          </Link>
+          <Link
+            href="https://wa.link/pn4i7u"
+            className="border border-white/30 px-8 py-4 rounded-xl ml-[16px] font-medium hover:bg-white hover:text-gray-900 transition"
+          >
+            Talk to a Hospitality Technology Expert
+          </Link>
+        </div>
       </motion.div>
     </section>
   );

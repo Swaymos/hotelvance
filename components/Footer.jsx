@@ -41,11 +41,9 @@ export default function Footer() {
           </div>
 
           <p className="text-[16px] text-gray-600 leading-relaxed max-w-sm">
-            Hotevance Limited is a Nigerian smart hospitality technology company
-            specializing in hotel Wi-Fi, GPON fiber networks, IPTV, VoIP phones,
-            automation, access control, and managed IT services. We serve
-            luxury, business, and boutique hotels seeking reliable, scalable,
-            and professionally supported technology solutions.
+            Hotevance Limited is a hospitality technology company serving hotels
+            across Nigeria, Africa, and international markets with smart,
+            scalable, and reliable hotel systems.
           </p>
 
           <p className="mt-6 text-[18px] text-gray-500">
