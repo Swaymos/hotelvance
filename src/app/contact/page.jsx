@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { Mail, Settings, Wrench } from "lucide-react";
 import SectionHeader from "../../../components/SectionHeader";
 import CTA from "../../../components/CTA";
+import instagram from "../../../public/svg/instagram.svg";
+import linkedIn from "../../../public/svg/linkedin.svg";
+import Image from "next/image";
 
 /* ---------------- ANIMATION VARIANTS ---------------- */
 const container = {
@@ -47,6 +50,30 @@ export default function ContactInfo() {
             <h2 className="text-[28px] sm:text-[32px] font-bold text-gray-900 leading-tight">
               Do you have any questions?
             </h2>
+            <li className="flex justify-center max-w-[300px] py-[120px] w-[50%] mx-auto items-start text-[18px] gap-3">
+              <a
+                href="https://www.instagram.com/hotevance?igsh=MW84cmozdjRoY3R3Yw=="
+                className="flex items-center gap-3 hover:text-primary"
+              >
+                <span className="text-primary mt-1">
+                  <Image
+                    src={instagram}
+                    width={40}
+                    height={40}
+                    alt="instagram"
+                  />
+                </span>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/hotevance-limited/"
+                className="flex items-center gap-3 hover:text-primary"
+              >
+                <span className="text-primary mt-1">
+                  <Image src={linkedIn} width={40} height={40} alt="linkedin" />
+                </span>
+              </a>
+            </li>
+
             <p className="mt-2 text-gray-600 text-[18px]">
               Ask <span className="font-semibold">Hotevance</span> for the
               information you are looking for.

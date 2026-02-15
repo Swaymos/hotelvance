@@ -6,6 +6,8 @@ import logo from "../public/svg/logo-dark.svg";
 import phoneIcon from "../public/svg/phone.svg";
 import mailIcon from "../public/svg/mail.svg";
 import locationIcon from "../public/svg/location.svg";
+import instagram from "../public/svg/instagram.svg";
+import linkedIn from "../public/svg/linkedin.svg";
 
 const container = {
   hidden: {},
@@ -72,13 +74,40 @@ export default function Footer() {
                 Contact
               </a>
             </li>
+            <li className="flex items-start text-[18px] gap-3">
+              <a
+                href="https://www.instagram.com/hotevance?igsh=MW84cmozdjRoY3R3Yw=="
+                className="flex items-center gap-3 hover:text-primary"
+              >
+                <span className="text-primary mt-1">
+                  <Image
+                    src={instagram}
+                    width={30}
+                    height={30}
+                    alt="instagram"
+                  />
+                </span>
+                Instagram
+              </a>
+            </li>
+            <li className="flex items-start text-[18px] gap-3">
+              <a
+                href="https://www.linkedin.com/company/hotevance-limited/"
+                className="flex items-center gap-3 hover:text-primary"
+              >
+                <span className="text-primary mt-1">
+                  <Image src={linkedIn} width={30} height={30} alt="linkedin" />
+                </span>
+                LinkedIn
+              </a>
+            </li>
           </ul>
         </motion.div>
 
         {/* Contact Info */}
         <motion.div variants={item}>
           <h4 className="mb-4 text-[20px] font-semibold text-primary">
-            Say Hello!
+            Contact
           </h4>
           <ul className="space-y-4 text-[18px] text-gray-700">
             <li className="">
@@ -106,6 +135,7 @@ export default function Footer() {
                 +2349085444555
               </a>
             </li>
+
             <li className="flex items-start text-[18px] gap-3">
               <p className="flex items-center gap-3 hover:text-primary">
                 <span className="text-primary mt-1">
