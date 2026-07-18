@@ -33,29 +33,25 @@ const cardVariants = {
 const process = [
   {
     title: "1. Audit",
-    description:
-      "Comprehensive assessment of existing infrastructure, coverage gaps, and guest experience challenges.",
-    position: "lg:absolute lg:top-[140px] lg:left-16",
+    description: "Assess existing infrastructure and risks.",
+    position: "lg:absolute lg:top-[200px] lg:left-16",
     image: gpon,
   },
   {
     title: "2. Design",
-    description:
-      "Custom system design aligned with your hotel’s size, classification, and service expectations.",
-    position: "lg:absolute lg:bottom-[260px] lg:left-16",
+    description: "Engineer a scalable hospitality-grade system.",
+    position: "lg:absolute lg:bottom-[160px] lg:left-16",
     image: gpon,
   },
   {
     title: "3. Deployment",
-    description:
-      "Professional installation with minimal disruption to guests and daily operations.",
-    position: "lg:absolute lg:bottom-[550px] lg:right-16",
+    description: "Professional installation and commissioning.",
+    position: "lg:absolute lg:bottom-[430px] lg:right-20",
     image: gpon,
   },
   {
     title: "4. Support",
-    description:
-      "Ongoing monitoring, preventive maintenance, and responsive technical support to protect long‑term performance.",
+    description: "Ongoing monitoring and optimization.",
     position: "lg:absolute lg:top-[430px] lg:right-16",
     image: gpon,
   },
@@ -85,9 +81,9 @@ export default function Process() {
           results.
         </motion.p>
       </section>
-      <section className="relative max-w-[1300px] mx-auto bg-[#F6F6F6] pointSection rounded-[10px] bg-opacity-40 h-[900px]">
+      <section className="relative max-w-[1300px] mx-auto bg-[#F6F6F6] pointSection rounded-[10px] bg-opacity-40 h-[800px]">
         {/* Background Image */}
-        <div className="absolute inset-0 top-[100px] left-[400px] backgroundBg process">
+        <div className="absolute inset-0 top-[100px] left-[250px] backgroundBg process">
           <Image
             src={hotel}
             alt="Hotel background"

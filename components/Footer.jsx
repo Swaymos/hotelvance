@@ -6,6 +6,8 @@ import logo from "../public/svg/logo-dark.svg";
 import phoneIcon from "../public/svg/phone.svg";
 import mailIcon from "../public/svg/mail.svg";
 import locationIcon from "../public/svg/location.svg";
+import instagram from "../public/svg/instagram.svg";
+import linkedIn from "../public/svg/linkedin.svg";
 
 const container = {
   hidden: {},
@@ -41,11 +43,9 @@ export default function Footer() {
           </div>
 
           <p className="text-[16px] text-gray-600 leading-relaxed max-w-sm">
-            Hotevance Limited is a Nigerian smart hospitality technology company
-            specializing in hotel Wi-Fi, GPON fiber networks, IPTV, VoIP phones,
-            automation, access control, and managed IT services. We serve
-            luxury, business, and boutique hotels seeking reliable, scalable,
-            and professionally supported technology solutions.
+            Hotevance Limited is a hospitality technology company serving hotels
+            across Nigeria, Africa, and international markets with smart,
+            scalable, and reliable hotel systems.
           </p>
 
           <p className="mt-6 text-[18px] text-gray-500">
@@ -74,40 +74,68 @@ export default function Footer() {
                 Contact
               </a>
             </li>
+            <li className="flex items-start text-[18px] gap-3">
+              <a
+                href="https://www.instagram.com/hotevance?igsh=MW84cmozdjRoY3R3Yw=="
+                className="flex items-center gap-3 hover:text-primary"
+              >
+                <span className="text-primary mt-1">
+                  <Image
+                    src={instagram}
+                    width={30}
+                    height={30}
+                    alt="instagram"
+                  />
+                </span>
+                Instagram
+              </a>
+            </li>
+            <li className="flex items-start text-[18px] gap-3">
+              <a
+                href="https://www.linkedin.com/company/hotevance-limited/"
+                className="flex items-center gap-3 hover:text-primary"
+              >
+                <span className="text-primary mt-1">
+                  <Image src={linkedIn} width={30} height={30} alt="linkedin" />
+                </span>
+                LinkedIn
+              </a>
+            </li>
           </ul>
         </motion.div>
 
         {/* Contact Info */}
         <motion.div variants={item}>
           <h4 className="mb-4 text-[20px] font-semibold text-primary">
-            Say Hello!
+            Contact
           </h4>
           <ul className="space-y-4 text-[18px] text-gray-700">
             <li className="">
               <a
                 className="flex items-center gap-3 hover:text-primary"
-                href="mailto:hello@hotevance.com"
+                href="mailto:wecare@hotevance.com"
               >
                 <span className="text-primary">
                   {" "}
                   <Image src={mailIcon} width={30} height={30} alt="icon" />
                 </span>
-                hello@hotevance.com
+                wecare@hotevance.com
               </a>
             </li>
             <li className="">
               <a
                 className="flex items-center gap-3 hover:text-primary"
-                href="tel:+2347063830062"
+                href="tel:+2349085444555"
               >
                 {" "}
                 <span className="text-primary text-[18px]">
                   {" "}
                   <Image src={phoneIcon} width={30} height={30} alt="icon" />
                 </span>
-                +234-706-383-0062
+                +2349085444555
               </a>
             </li>
+
             <li className="flex items-start text-[18px] gap-3">
               <p className="flex items-center gap-3 hover:text-primary">
                 <span className="text-primary mt-1">

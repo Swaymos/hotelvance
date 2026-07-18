@@ -63,17 +63,20 @@ export default function CTA() {
 
         {/* Content */}
         <div className="relative z-10 max-w-[700px] mx-auto px-6 py-16 text-center">
-          <h2 className="text-white text-xl md:text-2xl font-medium leading-relaxed mb-8">
-            Schedule a free Wi-Fi and network audit today and discover
-            <br className="hidden md:block sm:text-sm" />
-            how Hotevance can upgrade your hotel infrastructure.
+          <h2 className="text-3xl font-bold text-white">
+            Not Sure Where to Start? Start With an Audit.
           </h2>
+
+          <p className="mt-4 mb-10 text-white text-[18px]">
+            Free Hotel Technology Audit Includes: Wi-Fi • GPON • IPTV • VoIP •
+            Security • PMS Integration
+          </p>
 
           <Link
             href="https://wa.link/pn4i7u"
-            className="rounded-lg bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-700"
+            className="rounded-lg bg-primary px-6 py-4 text-[16px] font-medium text-white transition hover:opacity-95"
           >
-            Book a Free Hotel Technology Audit
+            Book Your Free Audit Now
           </Link>
         </div>
       </motion.section>
