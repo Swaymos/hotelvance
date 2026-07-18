@@ -3,12 +3,15 @@
 
 import { motion, useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 import Image from "next/image";
 import logo from "../public/svg/logo-primary.svg";
 import Link from "next/link";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const [active, setActive] = useState("");
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
 
@@ -43,7 +46,7 @@ export default function Navbar() {
         </div>
 
         <nav className="hidden md:flex gap-8 text-[18px] text-white/80   text-[16px]">
-          <a className="hover:text-primary" href="/services">
+          <a className={`hover:text-primary"`} href="/services">
             Services
           </a>
           <a className="hover:text-primary" href="/case-studies">

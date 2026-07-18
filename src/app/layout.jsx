@@ -56,6 +56,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="google-site-verification"
+          content="rMmRTsVzPP-fMgyGaW7eEQ-wJqwV5aafb-DtpcSRloE"
+        />
       </Head>
       <body
         className={`bg-white text-gray-900 antialiased ${outfit.className}`}
