@@ -1,9 +1,8 @@
-import pms from "../data/services/pms";
+import pms from "../../../data/services/pms";
 
-import services from "../data/services/index";
+import services from "../../../data/services/index";
 import { servicesBenefits as Benefits } from "../serviceComponents/servicesBenefits";
 import { servicesHero as Hero } from "../serviceComponents/servicesHero";
-import { servicesCTA as CTA } from "../serviceComponents/servicesCTA";
 import { servicesFAQ as FAQ } from "../serviceComponents/servicesFAQ";
 import { servicesProcess as Process } from "../serviceComponents/servicesProcess";
 import { servicesRelated as Related } from "../serviceComponents/servicesRelated";

@@ -1,20 +1,25 @@
 import Script from "next/script";
 import { notFound } from "next/navigation";
 
-import BlogHero from "@/components/blog/BlogHero";
-import BlogCard from "@/components/blog/BlogCard";
-import Search from "@/components/blog/Search";
-import Pagination from "@/components/blog/Pagination";
-import NewsletterCTA from "@/components/blog/NewsletterCTA";
-import Tags from "@/components/blog/Tags";
+import BlogHero from "../../../../components/blog/BlogHero";
+import BlogCard from "../../../../components/blog/BlogCard";
+import Search from "../../../../components/blog/Search";
+import Pagination from "../../../../components/blog/Pagination";
+import NewsletterCTA from "../../../../components/blog/NewsletterCTA";
+import Tags from "../../../../components/blog/Tags";
 
-import { getTagBySlug, getTagSlugs, getTags, getPostsByTag } from "@/lib/blog";
+import {
+  getTagBySlug,
+  getTagSlugs,
+  getTags,
+  getPostsByTag,
+} from "../../../../lib/blog";
 
-import { searchPosts, paginatePosts } from "@/lib/search";
+import { searchPosts, paginatePosts } from "../../../../lib/search";
 
-import { createTagMetadata } from "@/lib/seo";
+import { createTagMetadata } from "../../../../lib/seo";
 
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema } from "../../../../lib/schema";
 
 export const revalidate = 3600;
 

@@ -1,3 +1,5 @@
+// src/lib/blog.js
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -10,531 +12,408 @@ const POSTS_PATH = path.join(
     "blog"
 );
 
-/*
-|--------------------------------------------------------------------------
-| Utilities
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Helpers
+------------------------------------------------------- */
 
 function slugify(value = "") {
-    return value
-        .toString()
-        .trim()
+    return String(value)
         .toLowerCase()
-        .replace(/&/g, "and")
-        .replace(/['"]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
 }
 
-/*
-|--------------------------------------------------------------------------
-| Blog Directory
-|--------------------------------------------------------------------------
-*/
-
-function getFiles() {
+function ensurePostsDirectory() {
     if (!fs.existsSync(POSTS_PATH)) {
+        return false;
+    }
+
+    return true;
+}
+
+function getPostFiles() {
+    if (!ensurePostsDirectory()) {
         return [];
     }
 
     return fs
-        .readdirSync(POSTS_PATH, {
-            withFileTypes: true,
-        })
+        .readdirSync(POSTS_PATH)
         .filter(
-            (entry) =>
-                entry.isFile() &&
-                /\.(md|mdx)$/i.test(entry.name)
-        )
-        .map((entry) => entry.name);
+            (file) =>
+                file.endsWith(".md") ||
+                file.endsWith(".mdx")
+        );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Slugs
-|--------------------------------------------------------------------------
-*/
-
-export function getPostSlugs() {
-    return getFiles().map((file) =>
-        file.replace(/\.mdx?$/i, "")
-    );
-}
-
-/*
-|--------------------------------------------------------------------------
-| Get Single Post
-|--------------------------------------------------------------------------
-*/
-
-export function getPost(slug) {
-    if (!slug) {
-        return null;
-    }
-
-    const realSlug = String(slug)
-        .replace(/\.mdx?$/i, "")
-        .trim();
-
-    if (!realSlug) {
-        return null;
-    }
-
-    const mdxPath = path.join(
-        POSTS_PATH,
-        `${ realSlug }.mdx`
-    );
-
-    const mdPath = path.join(
-        POSTS_PATH,
-        `${ realSlug }.md`
-    );
-
-    let filePath = null;
-
-    if (fs.existsSync(mdxPath)) {
-        filePath = mdxPath;
-    } else if (fs.existsSync(mdPath)) {
-        filePath = mdPath;
-    }
-
-    if (!filePath) {
-        return null;
-    }
-
-    const source = fs.readFileSync(
-        filePath,
-        "utf8"
-    );
-
-    const { data, content } =
-        matter(source);
-
-    const normalizedTags = Array.isArray(
-        data.tags
-    )
-        ? data.tags.filter(Boolean)
-        : [];
-
-    const category =
-        typeof data.category === "string"
-            ? data.category.trim()
-            : "";
-
-    const title =
-        typeof data.title === "string"
-            ? data.title.trim()
-            : realSlug;
-
-    const description =
-        typeof data.description === "string"
-            ? data.description.trim()
-            : "";
-
-    return {
-        slug: realSlug,
-
-        title,
-
-        description,
-
-        category,
-
-        categorySlug: slugify(category),
-
-        tags: normalizedTags,
-
-        date: data.date || null,
-
-        updatedAt:
-            data.updatedAt || data.date || null,
-
-        author:
-            data.author || "Hotevance Team",
-
-        authorRole:
-            data.authorRole || "",
-
-        authorBio:
-            data.authorBio || "",
-
-        authorImage:
-            data.authorImage || "",
-
-        image: data.image || "",
-
-        featured:
-            Boolean(data.featured),
-
-        featuredOrder:
-            Number(data.featuredOrder || 999),
-
-        wordCount:
-            Number(data.wordCount || 0),
-
-        readingTime:
-            data.readingTime ||
-            readingTime(content).text,
-
-        content,
-    };
-}
-
-/*
-|--------------------------------------------------------------------------
-| All Posts
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Get all posts
+------------------------------------------------------- */
 
 export function getAllPosts() {
-    return getPostSlugs()
-        .map((slug) => getPost(slug))
-        .filter(Boolean)
-        .sort((a, b) => {
-            const dateA = new Date(
-                a.date || 0
-            ).getTime();
+    const files = getPostFiles();
 
-            const dateB = new Date(
-                b.date || 0
-            ).getTime();
+    const posts = files
+        .map((filename) => {
+            const filePath = path.join(POSTS_PATH, filename);
 
-            return dateB - dateA;
-        });
-}
+            try {
+                const source = fs.readFileSync(filePath, "utf8");
 
-/*
-|--------------------------------------------------------------------------
-| Featured Posts
-|--------------------------------------------------------------------------
-*/
+                const { data, content } = matter(source);
 
-export function getFeaturedPosts(
-    limit = 3
-) {
-    return getAllPosts()
-        .filter((post) => post.featured)
-        .sort(
-            (a, b) =>
-                a.featuredOrder -
-                b.featuredOrder
-        )
-        .slice(0, limit);
-}
+                const slug =
+                    data.slug ||
+                    filename
+                        .replace(/\.mdx?$/, "");
 
-/*
-|--------------------------------------------------------------------------
-| Latest Posts
-|--------------------------------------------------------------------------
-*/
+                const stats = readingTime(content);
 
-export function getLatestPosts(
-    limit = 6
-) {
-    return getAllPosts().slice(0, limit);
-}
+                return {
+                    ...data,
 
-/*
-|--------------------------------------------------------------------------
-| Categories
-|--------------------------------------------------------------------------
-*/
+                    slug,
 
-export function getCategories() {
-    const categoryMap = new Map();
+                    content,
 
-    getAllPosts().forEach((post) => {
-        if (!post.category) {
-            return;
-        }
+                    readingTime:
+                        data.readingTime || stats.text,
 
-        const name =
-            post.category.trim();
+                    wordCount:
+                        data.wordCount ||
+                        stats.words,
 
-        const slug =
-            slugify(name);
+                    date: data.date
+                        ? String(data.date)
+                        : "",
 
-        if (!slug) {
-            return;
-        }
+                    updatedAt: data.updatedAt
+                        ? String(data.updatedAt)
+                        : data.date
+                            ? String(data.date)
+                            : "",
+                };
+            } catch (error) {
+                console.error(
+                    `Failed to read blog post: ${ filename }`,
+                    error
+                );
 
-        if (!categoryMap.has(slug)) {
-            categoryMap.set(slug, {
-                name,
-                slug,
-                count: 0,
-            });
-        }
+                return null;
+            }
+        })
+        .filter(Boolean);
 
-        const category =
-            categoryMap.get(slug);
-
-        category.count += 1;
+    return posts.sort((a, b) => {
+        return (
+            new Date(b.date || 0) -
+            new Date(a.date || 0)
+        );
     });
-
-    return Array.from(
-        categoryMap.values()
-    ).sort((a, b) =>
-        a.name.localeCompare(
-            b.name
-        )
-    );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Get Category By Slug
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Get one post
+------------------------------------------------------- */
 
-export function getCategoryBySlug(
-    slug
-) {
-    if (!slug) {
-        return null;
-    }
+export function getPost(slug) {
+    if (!slug) return null;
 
-    const normalizedSlug =
-        slugify(slug);
+    const posts = getAllPosts();
 
     return (
-        getCategories().find(
-            (category) =>
-                category.slug ===
-                normalizedSlug
+        posts.find(
+            (post) =>
+                post.slug === slug
         ) || null
     );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Category Slugs
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Get post slugs
+------------------------------------------------------- */
 
-export function getCategorySlugs() {
-    return getCategories().map(
-        (category) => category.slug
+export function getPostSlugs() {
+    return getAllPosts().map(
+        (post) => post.slug
     );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Posts By Category
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Categories
+------------------------------------------------------- */
 
-export function getPostsByCategory(
-    category
-) {
-    if (!category) {
-        return [];
-    }
+export function getCategories() {
+    const categories = new Set();
+
+    getAllPosts().forEach((post) => {
+        if (post.category) {
+            categories.add(post.category);
+        }
+    });
+
+    return Array.from(categories).sort(
+        (a, b) =>
+            a.localeCompare(b)
+    );
+}
+
+export function getCategorySlugs() {
+    return getCategories().map(
+        (category) =>
+            slugify(category)
+    );
+}
+
+export function getCategoryBySlug(slug) {
+    if (!slug) return null;
+
+    return (
+        getCategories().find(
+            (category) =>
+                slugify(category) === slug
+        ) || null
+    );
+}
+
+export function getPostsByCategory(category) {
+    if (!category) return [];
 
     const categorySlug =
         slugify(category);
 
     return getAllPosts().filter(
         (post) =>
-            post.categorySlug ===
+            post.category &&
+            slugify(post.category) ===
             categorySlug
     );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Tags
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Tags
+------------------------------------------------------- */
 
 export function getTags() {
-    const tagMap = new Map();
+    const tags = new Set();
 
     getAllPosts().forEach((post) => {
+        if (!Array.isArray(post.tags)) {
+            return;
+        }
+
         post.tags.forEach((tag) => {
-            const name =
-                String(tag).trim();
-
-            const slug =
-                slugify(name);
-
-            if (!slug) {
-                return;
+            if (tag) {
+                tags.add(tag);
             }
-
-            if (!tagMap.has(slug)) {
-                tagMap.set(slug, {
-                    name,
-                    slug,
-                    count: 0,
-                });
-            }
-
-            tagMap.get(slug).count += 1;
         });
     });
 
-    return Array.from(
-        tagMap.values()
-    ).sort(
+    return Array.from(tags).sort(
         (a, b) =>
-            b.count - a.count ||
-            a.name.localeCompare(
-                b.name
-            )
+            a.localeCompare(b)
     );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Get Tag By Slug
-|--------------------------------------------------------------------------
-*/
+export function getTagSlugs() {
+    return getTags().map(
+        (tag) => slugify(tag)
+    );
+}
 
-export function getTagBySlug(
-    slug
-) {
-    if (!slug) {
-        return null;
-    }
-
-    const normalizedSlug =
-        slugify(slug);
+export function getTagBySlug(slug) {
+    if (!slug) return null;
 
     return (
         getTags().find(
             (tag) =>
-                tag.slug ===
-                normalizedSlug
+                slugify(tag) === slug
         ) || null
     );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Posts By Tag
-|--------------------------------------------------------------------------
-*/
-
-export function getPostsByTag(
-    tag
-) {
-    if (!tag) {
-        return [];
-    }
+export function getPostsByTag(tag) {
+    if (!tag) return [];
 
     const tagSlug =
         slugify(tag);
 
     return getAllPosts().filter(
-        (post) =>
-            post.tags.some(
+        (post) => {
+            if (!Array.isArray(post.tags)) {
+                return false;
+            }
+
+            return post.tags.some(
                 (postTag) =>
                     slugify(postTag) ===
                     tagSlug
-            )
+            );
+        }
     );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Related Posts
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Featured posts
+------------------------------------------------------- */
 
-export function getRelatedPosts(
-    slug,
-    limit = 3
-) {
-    const current =
-        getPost(slug);
-
-    if (!current) {
-        return [];
-    }
-
+export function getFeaturedPosts() {
     return getAllPosts()
         .filter(
             (post) =>
-                post.slug !== current.slug
+                post.featured === true ||
+                post.featured === "true"
         )
-        .map((post) => {
-            let score = 0;
-
-            if (
-                post.categorySlug ===
-                current.categorySlug
-            ) {
-                score += 10;
-            }
-
-            const sharedTags =
-                post.tags.filter(
-                    (tag) =>
-                        current.tags.some(
-                            (currentTag) =>
-                                slugify(
-                                    currentTag
-                                ) ===
-                                slugify(tag)
-                        )
-                );
-
-            score +=
-                sharedTags.length * 3;
-
-            return {
-                ...post,
-                score,
-            };
-        })
         .sort((a, b) => {
-            if (b.score !== a.score) {
-                return b.score - a.score;
+            if (
+                a.featuredOrder != null &&
+                b.featuredOrder != null
+            ) {
+                return (
+                    Number(a.featuredOrder) -
+                    Number(b.featuredOrder)
+                );
             }
 
             return (
                 new Date(b.date || 0) -
                 new Date(a.date || 0)
             );
-        })
-        .slice(0, limit);
+        });
 }
 
-/*
-|--------------------------------------------------------------------------
-| Pagination
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Related posts
+------------------------------------------------------- */
+
+export function getRelatedPosts(
+    currentPost,
+    limit = 3
+) {
+    if (!currentPost) {
+        return [];
+    }
+
+    const posts = getAllPosts();
+
+    const related = posts
+        .filter(
+            (post) =>
+                post.slug !==
+                currentPost.slug
+        )
+        .map((post) => {
+            let score = 0;
+
+            if (
+                post.category &&
+                currentPost.category &&
+                slugify(post.category) ===
+                slugify(currentPost.category)
+            ) {
+                score += 5;
+            }
+
+            if (
+                Array.isArray(post.tags) &&
+                Array.isArray(currentPost.tags)
+            ) {
+                const currentTags =
+                    currentPost.tags.map(
+                        (tag) => slugify(tag)
+                    );
+
+                const matchingTags =
+                    post.tags.filter((tag) =>
+                        currentTags.includes(
+                            slugify(tag)
+                        )
+                    );
+
+                score +=
+                    matchingTags.length * 2;
+            }
+
+            return {
+                ...post,
+                relevanceScore: score,
+            };
+        })
+        .filter(
+            (post) =>
+                post.relevanceScore > 0
+        )
+        .sort(
+            (a, b) =>
+                b.relevanceScore -
+                a.relevanceScore
+        );
+
+    return related.slice(0, limit);
+}
+
+/* -------------------------------------------------------
+   Search
+------------------------------------------------------- */
+
+export function searchPosts(query) {
+    if (!query) {
+        return getAllPosts();
+    }
+
+    const normalizedQuery =
+        query.toLowerCase().trim();
+
+    if (!normalizedQuery) {
+        return getAllPosts();
+    }
+
+    return getAllPosts().filter(
+        (post) => {
+            const searchableText = [
+                post.title,
+                post.description,
+                post.category,
+                post.author,
+                ...(Array.isArray(post.tags)
+                    ? post.tags
+                    : []),
+                post.content,
+            ]
+                .filter(Boolean)
+                .join(" ")
+                .toLowerCase();
+
+            return searchableText.includes(
+                normalizedQuery
+            );
+        }
+    );
+}
+
+/* -------------------------------------------------------
+   Pagination
+------------------------------------------------------- */
 
 export function paginatePosts(
-    posts = [],
+    posts,
     page = 1,
     perPage = 9
 ) {
+    const currentPage =
+        Math.max(1, Number(page) || 1);
+
     const totalPosts =
         posts.length;
 
     const totalPages =
-        Math.max(
-            1,
-            Math.ceil(
-                totalPosts / perPage
-            )
+        Math.ceil(
+            totalPosts / perPage
         );
 
-    const currentPage = Math.min(
-        Math.max(
-            1,
-            Number(page) || 1
-        ),
-        totalPages
-    );
-
     const start =
-        (currentPage - 1) *
-        perPage;
+        (currentPage - 1) * perPage;
 
     const end =
         start + perPage;
@@ -545,78 +424,38 @@ export function paginatePosts(
             end
         ),
 
-        currentPage,
+        page: currentPage,
 
-        totalPages,
+        perPage,
 
         totalPosts,
 
-        hasPreviousPage:
-            currentPage > 1,
+        totalPages,
 
         hasNextPage:
             currentPage <
             totalPages,
+
+        hasPreviousPage:
+            currentPage > 1,
     };
 }
 
-/*
-|--------------------------------------------------------------------------
-| Search
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Latest posts
+------------------------------------------------------- */
 
-export function searchPosts(
-    query
+export function getLatestPosts(
+    limit = 3
 ) {
-    if (!query?.trim()) {
-        return getAllPosts();
-    }
-
-    const search =
-        query
-            .toLowerCase()
-            .trim();
-
-    return getAllPosts().filter(
-        (post) => {
-            const title =
-                post.title
-                    ?.toLowerCase() || "";
-
-            const description =
-                post.description
-                    ?.toLowerCase() || "";
-
-            const category =
-                post.category
-                    ?.toLowerCase() || "";
-
-            const tags =
-                post.tags
-                    .join(" ")
-                    .toLowerCase();
-
-            return (
-                title.includes(search) ||
-                description.includes(search) ||
-                category.includes(search) ||
-                tags.includes(search)
-            );
-        }
+    return getAllPosts().slice(
+        0,
+        limit
     );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Static Params
-|--------------------------------------------------------------------------
-*/
+/* -------------------------------------------------------
+   Export helper
+------------------------------------------------------- */
 
-export function generateStaticParams() {
-    return getPostSlugs().map(
-        (slug) => ({
-            slug,
-        })
-    );
-}
+export { slugify };

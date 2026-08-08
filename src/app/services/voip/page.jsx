@@ -1,11 +1,10 @@
 // app/services/pms-integration/page.jsx
 
-import voip from "../data/services/voip";
+import voip from "../../../data/services/voip";
 
-import services from "../data/services/index";
+import services from "../../../data/services/index";
 import { servicesBenefits as Benefits } from "../serviceComponents/servicesBenefits";
 import { servicesHero as Hero } from "../serviceComponents/servicesHero";
-import { servicesCTA as CTA } from "../serviceComponents/servicesCTA";
 import { servicesFAQ as FAQ } from "../serviceComponents/servicesFAQ";
 import { servicesProcess as Process } from "../serviceComponents/servicesProcess";
 import { servicesRelated as Related } from "../serviceComponents/servicesRelated";

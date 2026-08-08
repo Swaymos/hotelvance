@@ -11,7 +11,7 @@ import {
   Network,
 } from "lucide-react";
 
-import { getCaseStudy, getCaseStudySlugs } from "../../../../data/caseStudies";
+import { getCaseStudy, getCaseStudySlugs } from "../../../data/caseStudies";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://hotevance.com";
 

@@ -118,9 +118,6 @@ export default function Navbar() {
       ====================================================== */}
 
       <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/95 backdrop-blur-xl">
-        {/* Subtle top accent */}
-        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#58AEBC] to-transparent" />
-
         <nav
           className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8"
           aria-label="Main navigation"

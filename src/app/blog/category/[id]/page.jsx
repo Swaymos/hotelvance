@@ -1,169 +1,145 @@
 import Link from "next/link";
-import Script from "next/script";
 import { notFound } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 
-import BlogCard from "../../../components/blog/BlogCard";
-import Breadcrumbs from "../../../components/blog/Breadcrumbs";
-import Pagination from "../../../components/blog/Pagination";
-import NewsletterCTA from "../../../components/blog/NewsletterCTA";
+import { getAllPosts } from "../../../../lib/blog";
 
-import {
-  getCategories,
-  getCategoryBySlug,
-  getPostsByCategory,
-  paginatePosts,
-} from "../../../../lib/blog";
+export const dynamicParams = true;
 
-import { absoluteUrl } from "../../../../lib/seo";
-import { breadcrumbSchema } from "../../../../lib/schema";
-
-export const revalidate = 3600;
-
-const POSTS_PER_PAGE = 9;
+function slugify(value) {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 export async function generateStaticParams() {
-  return getCategories().map((category) => ({
-    id: category.slug,
+  const posts = getAllPosts();
+
+  const categories = [
+    ...new Set(
+      posts
+        .map((post) => post.category)
+        .filter(
+          (category) =>
+            typeof category === "string" && category.trim().length > 0
+        )
+    ),
+  ];
+
+  return categories.map((category) => ({
+    id: slugify(category),
   }));
 }
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
 
-  const category = getCategoryBySlug(id);
+  const posts = getAllPosts();
+
+  const category = posts
+    .map((post) => post.category)
+    .find((category) => slugify(category) === id);
 
   if (!category) {
     return {
       title: "Category Not Found | Hotevance",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
   return {
-    title: `${category.name} | Hotevance Blog`,
-
-    description: `Explore Hotevance articles about ${category.name}, hotel technology, hospitality IT, networking, and digital transformation.`,
-
+    title: `${category} | Hotevance Blog`,
+    description: `Explore Hotevance articles about ${category}, hotel technology, hospitality IT, and digital infrastructure.`,
     alternates: {
-      canonical: absoluteUrl(`/blog/category/${category.slug}`),
-    },
-
-    openGraph: {
-      title: `${category.name} | Hotevance Blog`,
-      description: `Explore Hotevance articles about ${category.name}.`,
-      url: absoluteUrl(`/blog/category/${category.slug}`),
-      type: "website",
+      canonical: `/blog/category/${id}`,
     },
   };
 }
 
-export default async function CategoryPage({ params, searchParams }) {
+export default async function CategoryPage({ params }) {
   const { id } = await params;
-  const query = await searchParams;
 
-  const category = getCategoryBySlug(id);
+  const posts = getAllPosts();
+
+  const category = posts
+    .map((post) => post.category)
+    .find((category) => slugify(category) === id);
 
   if (!category) {
     notFound();
   }
 
-  const page = Math.max(1, Number(query?.page || 1));
-
-  const categoryPosts = getPostsByCategory(category.name);
-
-  const pagination = paginatePosts(categoryPosts, page, POSTS_PER_PAGE);
-
-  const breadcrumbs = [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: category.name,
-      href: `/blog/category/${category.slug}`,
-    },
-  ];
+  const categoryPosts = posts.filter((post) => slugify(post.category) === id);
 
   return (
-    <>
-      <Script
-        id="category-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema(breadcrumbs)),
-        }}
-      />
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
+          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
+            Blog Category
+          </span>
 
-      <main>
-        <section className="border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950">
-          <div className="mx-auto max-w-7xl px-6 py-16">
-            <Breadcrumbs items={breadcrumbs} />
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
+            {category}
+          </h1>
 
-            <div className="mt-10 max-w-3xl">
-              <span className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-                Blog Category
-              </span>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            Explore our latest articles, insights, and practical guidance about{" "}
+            {category.toLowerCase()} and hotel technology.
+          </p>
+        </div>
+      </section>
 
-              <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl dark:text-white">
-                {category.name}
-              </h1>
-
-              <p className="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-400">
-                Explore our latest insights, guides, and practical advice about{" "}
-                {category.name}.
-              </p>
-
-              <p className="mt-4 text-sm text-slate-500">
-                {pagination.totalPosts}{" "}
-                {pagination.totalPosts === 1 ? "article" : "articles"}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-6 py-16">
-          {pagination.posts.length > 0 ? (
-            <>
-              <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-                {pagination.posts.map((post) => (
-                  <BlogCard key={post.slug} post={post} />
-                ))}
-              </div>
-
-              {pagination.totalPages > 1 && (
-                <div className="mt-16">
-                  <Pagination
-                    currentPage={pagination.currentPage}
-                    totalPages={pagination.totalPages}
-                  />
-                </div>
-              )}
-            </>
-          ) : (
+      <section>
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          {categoryPosts.length === 0 ? (
             <div className="py-20 text-center">
-              <h2 className="text-2xl font-bold">No articles found</h2>
+              <h2 className="text-2xl font-bold text-slate-900">
+                No articles found
+              </h2>
 
               <p className="mt-3 text-slate-600">
-                No articles are currently available in this category.
+                There are currently no articles in this category.
               </p>
+            </div>
+          ) : (
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {categoryPosts.map((post) => (
+                <article
+                  key={post.slug}
+                  className="group rounded-3xl border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
+                >
+                  <span className="text-sm font-semibold text-blue-600">
+                    {post.category}
+                  </span>
 
-              <Link
-                href="/blog"
-                className="mt-6 inline-flex rounded-xl bg-primary px-5 py-3 font-semibold text-white"
-              >
-                View all articles
-              </Link>
+                  <h2 className="mt-4 text-2xl font-bold text-slate-950">
+                    {post.title}
+                  </h2>
+
+                  <p className="mt-4 leading-7 text-slate-600">
+                    {post.description}
+                  </p>
+
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="mt-6 inline-flex items-center gap-2 font-semibold text-blue-600"
+                  >
+                    Read article
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </article>
+              ))}
             </div>
           )}
-
-          <div className="mt-24">
-            <NewsletterCTA />
-          </div>
-        </section>
-      </main>
-    </>
+        </div>
+      </section>
+    </main>
   );
 }

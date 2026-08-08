@@ -261,17 +261,6 @@ export default async function BlogPage({ searchParams }) {
 
       <main>
         <section className="mx-auto max-w-7xl px-6 py-16">
-          {/* Search + Categories */}
-
-          <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <Search />
-
-            <Categories
-              categories={categories}
-              activeCategory={activeCategory}
-            />
-          </div>
-
           {/* Search Result Heading */}
 
           {(search || activeCategory !== "All") && (
