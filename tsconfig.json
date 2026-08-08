@@ -9,7 +9,7 @@
     "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -26,7 +26,13 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/home/page.jsx"
+    "src/app/home/page.jsx",
+    "src/app/blog/[slug]/page.jsx",
+    "src/app/blog/page.jsx",
+    "src/app/blog/not-found.jsx",
+    "src/app/blog/loading.jsx",
+    "src/app/blog/category/[id]/page.jsx",
+    "src/app/blog/tag/[slug]/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

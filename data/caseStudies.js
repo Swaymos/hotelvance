@@ -1,150 +1,394 @@
-import hotelAbuja from "../public/hotels/hotel-abuja.png";
-import hotelAbuja2 from "../public/hotels/hotel-abuja2.png";
-import hotelLagos from "../public/hotels/hotel-lagos.png";
-
 export const caseStudies = [
     {
-        id: "new-hotel-development-abuja",
-        title: "New Hotel Development – Abuja",
-        image: hotelAbuja,
+        slug: "hotel-wifi-network-upgrade",
+        title: "Hotel Wi-Fi Network Upgrade",
+        metaTitle: "Hotel Wi-Fi Network Upgrade | Hotevance",
+        metaDescription:
+            "See how Hotevance improved hotel Wi-Fi coverage, reliability and network capacity through a professional wireless network upgrade.",
+
+        property: "Premium Hotel",
         location: "Abuja, Nigeria",
-        projectType: "Technology Design & Pre-Construction Consulting",
-        projectStage: "New-build hotel (pre-opening)",
+        category: "Hotel Wi-Fi",
+        year: "2026",
+
+        excerpt:
+            "A complete wireless network improvement project designed to provide reliable, high-speed connectivity across guest rooms and shared areas.",
+
+        heroDescription:
+            "Hotevance assessed and upgraded the property's wireless infrastructure to create a more reliable, scalable and guest-friendly hotel Wi-Fi experience.",
+
+        image: "/images/case-studies/hotel-wifi-network.jpg",
+
+        alt:
+            "Hotel Wi-Fi network infrastructure installed by Hotevance",
+
         challenge: [
-            "No clear technology roadmap during construction",
-            "Risk of costly redesigns after opening",
-            "Lack of coordination between contractors",
+            "Inconsistent wireless coverage across parts of the property.",
+            "Guest complaints about slow or unreliable internet connectivity.",
+            "Network capacity needed to support increasing numbers of connected devices.",
+            "Existing infrastructure required better planning and optimization.",
         ],
-        solution: {
-            summary: "Acted as Hotel Technology Consultant",
-            deliverables: [
-                "Technology design drawings",
-                "GPON & structured cabling plans",
-                "Wi-Fi, IPTV, VoIP & security specifications",
-                "Coordination with architects and engineers",
-            ],
-        },
+
+        solution: [
+            "Assessed the existing wireless infrastructure.",
+            "Reviewed coverage requirements across guest and operational areas.",
+            "Optimized wireless access point positioning.",
+            "Improved network capacity and connectivity management.",
+            "Tested network performance across key areas of the property.",
+        ],
+
+        technologies: [
+            "Enterprise Wi-Fi",
+            "Wireless Access Points",
+            "Network Infrastructure",
+            "Network Optimization",
+            "Guest Wi-Fi",
+        ],
+
         results: [
-            "Correct infrastructure installed from day one",
-            "Reduced post-construction changes",
-            "Lower long-term operational cost",
-            "Faster and smoother hotel opening",
+            "Improved wireless coverage",
+            "More consistent guest connectivity",
+            "Better network capacity",
+            "Reduced connectivity complaints",
+            "More scalable network infrastructure",
         ],
-        outcome:
-            "A future-ready hotel infrastructure built right from the foundation.",
+
+        metrics: [
+            {
+                value: "Improved",
+                label: "Wi-Fi Coverage",
+            },
+            {
+                value: "Higher",
+                label: "Network Capacity",
+            },
+            {
+                value: "Better",
+                label: "Guest Connectivity",
+            },
+            {
+                value: "Reduced",
+                label: "Connectivity Issues",
+            },
+        ],
+
+        services: [
+            {
+                title: "Hotel Wi-Fi Solutions",
+                description:
+                    "Reliable, high-speed wireless networks designed for hotels and hospitality environments.",
+                href: "/services/hotel-wifi",
+            },
+            {
+                title: "Managed IT Support",
+                description:
+                    "Ongoing technology monitoring, maintenance and support for hospitality businesses.",
+                href: "/services/managed-it",
+            },
+        ],
+
+        relatedCaseStudies: [
+            {
+                title: "Hotel IPTV Deployment",
+                category: "Hotel IPTV",
+                href: "/case-studies/hotel-iptv-deployment",
+            },
+            {
+                title: "Hotel Fiber Network",
+                category: "GPON & Fiber",
+                href: "/case-studies/hotel-fiber-network",
+            },
+        ],
     },
 
     {
-        id: "international-business-hotel-africa",
-        image: hotelAbuja2,
-        title: "International Business Hotel – Africa Region",
-        location: "Africa (Multi-country)",
-        projectType: "Technology Audit & Upgrade Roadmap",
-        challenge: [
-            "Aging systems across multiple departments",
-            "Increasing maintenance cost",
-            "No clear upgrade priorities",
-        ],
-        solution: {
-            summary: "Comprehensive Hotel Technology Audit",
-            deliverables: [
-                "Risk assessment and system health scoring",
-                "Phased upgrade roadmap with cost projections",
-            ],
-        },
-        results: [
-            "Clear upgrade priorities",
-            "Reduced unnecessary spending",
-            "Improved long-term planning for management",
-        ],
-        outcome:
-            "A clear, data-driven technology strategy aligned with international operations.",
-    },
+        slug: "hotel-iptv-deployment",
+        title: "Hotel IPTV Deployment",
+        metaTitle: "Hotel IPTV Deployment | Hotevance",
+        metaDescription:
+            "Explore how Hotevance deployed a modern IPTV system to improve in-room entertainment and simplify content management for a hotel.",
 
-    {
-        id: "serviced-apartments-lagos",
-        image: hotelLagos,
-        title: "Serviced Apartments – Lagos",
+        property: "Business Hotel",
         location: "Lagos, Nigeria",
-        projectType: "FTTH / GPON & Smart Living Infrastructure",
+        category: "Hotel IPTV",
+        year: "2026",
+
+        excerpt:
+            "An in-room entertainment deployment designed to provide guests with a modern and reliable hotel TV experience.",
+
+        heroDescription:
+            "Hotevance designed and deployed an IPTV environment that integrated with the hotel's network infrastructure and delivered a modern in-room entertainment experience.",
+
+        image: "/images/case-studies/hotel-iptv.jpg",
+
+        alt:
+            "Hotel IPTV and in-room entertainment system deployed by Hotevance",
+
         challenge: [
-            "Residents demanded faster internet",
-            "Copper cabling caused frequent faults",
-            "High support cost",
+            "The existing television experience was outdated.",
+            "The hotel needed a centralized entertainment platform.",
+            "Content management needed to be easier for hotel staff.",
+            "The system needed to operate reliably across guest rooms.",
         ],
-        solution: {
-            summary: "GPON fiber deployment to each apartment",
-            deliverables: [
-                "Centralized bandwidth management",
-                "Infrastructure ready for IPTV, VoIP, and smart access",
-            ],
-        },
+
+        solution: [
+            "Reviewed the existing network infrastructure.",
+            "Designed an IPTV architecture suitable for the property.",
+            "Configured the IPTV infrastructure and endpoints.",
+            "Integrated the IPTV system with the hotel network.",
+            "Tested service delivery across guest rooms.",
+        ],
+
+        technologies: [
+            "Hotel IPTV",
+            "Hospitality TV",
+            "IPTV Headend",
+            "Network Infrastructure",
+            "In-Room Entertainment",
+        ],
+
         results: [
-            "Faster and more reliable connectivity",
-            "Lower maintenance requirements",
-            "Increased property value perception",
+            "Modernized in-room entertainment",
+            "Centralized content management",
+            "Improved guest experience",
+            "Simplified system administration",
+            "Reliable IPTV delivery",
         ],
-        outcome: "A future-ready serviced apartment infrastructure.",
+
+        metrics: [
+            {
+                value: "Modern",
+                label: "Guest TV Experience",
+            },
+            {
+                value: "Centralized",
+                label: "Content Management",
+            },
+            {
+                value: "Reliable",
+                label: "IPTV Delivery",
+            },
+            {
+                value: "Simplified",
+                label: "Administration",
+            },
+        ],
+
+        services: [
+            {
+                title: "Hotel IPTV Systems",
+                description:
+                    "Modern in-room entertainment systems designed for hospitality properties.",
+                href: "/services/hotel-iptv",
+            },
+            {
+                title: "Hotel Wi-Fi Solutions",
+                description:
+                    "High-performance hotel networking designed for connected guest experiences.",
+                href: "/services/hotel-wifi",
+            },
+        ],
+
+        relatedCaseStudies: [
+            {
+                title: "Hotel Wi-Fi Network Upgrade",
+                category: "Hotel Wi-Fi",
+                href: "/case-studies/hotel-wifi-network-upgrade",
+            },
+        ],
     },
 
     {
-        id: "airport-hotel-lagos",
-        title: "Airport Hotel – Lagos, Nigeria",
-        image: hotelAbuja,
-        location: "Lagos, Nigeria",
-        projectType: "High-Availability Network & Business Guest Connectivity",
-        hotelProfile:
-            "Business hotel serving airline crews, executives, and short-stay travelers",
+        slug: "hotel-fiber-network",
+        title: "Hotel Fiber Network Infrastructure",
+        metaTitle: "Hotel Fiber Network Infrastructure | Hotevance",
+        metaDescription:
+            "Explore a hotel fiber and GPON network infrastructure project delivered by Hotevance for improved capacity, scalability and connectivity.",
+
+        property: "Hospitality Property",
+        location: "Abuja, Nigeria",
+        category: "GPON & Fiber",
+        year: "2026",
+
+        excerpt:
+            "A scalable fiber infrastructure project designed to support growing connectivity requirements across a hospitality property.",
+
+        heroDescription:
+            "Hotevance designed a scalable fiber infrastructure capable of supporting the property's growing network and connectivity requirements.",
+
+        image: "/images/case-studies/hotel-fiber-network.jpg",
+
+        alt:
+            "Hotel fiber and GPON network infrastructure by Hotevance",
+
         challenge: [
-            "Constant Wi-Fi downtime affecting business guests",
-            "Network failures during peak check-in/check-out hours",
-            "No redundancy or failover",
+            "Existing infrastructure had limited capacity.",
+            "The property required improved network scalability.",
+            "Multiple areas needed reliable connectivity.",
+            "The network needed to support increasing technology demands.",
         ],
-        solution: {
-            summary: "Designed a redundant core network architecture",
-            deliverables: [
-                "High-availability routing and switching",
-                "Segmentation of guest, staff, and back-office traffic",
-                "Monitoring and alerting implementation",
-            ],
-        },
+
+        solution: [
+            "Assessed the property's network infrastructure.",
+            "Designed a scalable fiber distribution architecture.",
+            "Planned GPON infrastructure around the property's requirements.",
+            "Implemented network distribution infrastructure.",
+            "Tested connectivity and infrastructure performance.",
+        ],
+
+        technologies: [
+            "GPON",
+            "Fiber Optics",
+            "Network Distribution",
+            "Structured Cabling",
+            "Network Infrastructure",
+        ],
+
         results: [
-            "Near-zero downtime during peak usage",
-            "Improved guest satisfaction among business travelers",
-            "Reduced emergency maintenance calls",
+            "Higher network capacity",
+            "Improved infrastructure scalability",
+            "More reliable connectivity",
+            "Better network performance",
+            "Infrastructure ready for future expansion",
         ],
-        outcome:
-            "A business-critical hotel network built for reliability and speed.",
+
+        metrics: [
+            {
+                value: "Higher",
+                label: "Network Capacity",
+            },
+            {
+                value: "Scalable",
+                label: "Infrastructure",
+            },
+            {
+                value: "Reliable",
+                label: "Connectivity",
+            },
+            {
+                value: "Future-Ready",
+                label: "Network",
+            },
+        ],
+
+        services: [
+            {
+                title: "GPON & Fiber Networks",
+                description:
+                    "High-capacity fiber infrastructure designed for connected hospitality properties.",
+                href: "/services/gpon-fiber",
+            },
+        ],
+
+        relatedCaseStudies: [
+            {
+                title: "Hotel Wi-Fi Network Upgrade",
+                category: "Hotel Wi-Fi",
+                href: "/case-studies/hotel-wifi-network-upgrade",
+            },
+        ],
     },
 
     {
-        id: "boutique-hotel-lagos",
-        title: "Boutique Hotel – Lagos, Nigeria",
-        image: hotelLagos,
+        slug: "managed-it-hospitality",
+        title: "Managed IT Support for Hospitality",
+        metaTitle: "Managed IT Support for Hospitality | Hotevance",
+        metaDescription:
+            "See how Hotevance provides managed IT support for hospitality businesses through monitoring, maintenance, troubleshooting and proactive technology management.",
+
+        property: "Independent Hotel",
         location: "Lagos, Nigeria",
-        projectType: "IPTV & Guest Room Entertainment System",
-        hotelSize: "40 rooms | Leisure & short-stay guests",
+        category: "Managed IT",
+        year: "2026",
+
+        excerpt:
+            "Ongoing technology support designed to improve reliability, reduce downtime and simplify day-to-day IT operations.",
+
+        heroDescription:
+            "Hotevance provides proactive technology support to help hospitality teams maintain reliable systems and resolve technical issues faster.",
+
+        image: "/images/case-studies/managed-it-hospitality.jpg",
+
+        alt:
+            "Managed IT support for hospitality business by Hotevance",
+
         challenge: [
-            "No branding or guest messaging",
-            "Poor satellite TV signal quality",
-            "No centralized control or content management",
-            "Outdated in-room guest experience",
+            "Technology issues were disrupting day-to-day operations.",
+            "IT problems required faster response times.",
+            "The property needed more proactive technology monitoring.",
+            "Existing technology infrastructure required ongoing maintenance.",
         ],
-        solution: {
-            summary: "Deployed a hotel-grade IPTV system",
-            deliverables: [
-                "Branded welcome screens and hotel information",
-                "Centralized content control for all rooms",
-                "Future-ready PMS billing integration design",
-            ],
-        },
+
+        solution: [
+            "Reviewed the existing IT environment.",
+            "Identified recurring infrastructure issues.",
+            "Implemented proactive monitoring and maintenance.",
+            "Provided technical troubleshooting and support.",
+            "Established an ongoing technology support process.",
+        ],
+
+        technologies: [
+            "Managed IT",
+            "Network Monitoring",
+            "IT Infrastructure",
+            "Technical Support",
+            "Preventive Maintenance",
+        ],
+
         results: [
-            "Modern, premium in-room guest experience",
-            "Reduced maintenance issues compared to satellite TV",
-            "Stronger brand perception among guests",
-            "Increased guest satisfaction and longer stays",
+            "Faster issue resolution",
+            "Improved system reliability",
+            "Reduced operational disruption",
+            "Proactive technology management",
+            "Better visibility into IT infrastructure",
         ],
-        outcome:
-            "A transformed guest room experience aligned with modern hospitality expectations.",
+
+        metrics: [
+            {
+                value: "Faster",
+                label: "Issue Resolution",
+            },
+            {
+                value: "Improved",
+                label: "System Reliability",
+            },
+            {
+                value: "Reduced",
+                label: "Disruption",
+            },
+            {
+                value: "Proactive",
+                label: "IT Management",
+            },
+        ],
+
+        services: [
+            {
+                title: "Managed IT Support",
+                description:
+                    "Proactive technology management and technical support for hospitality businesses.",
+                href: "/services/managed-it",
+            },
+        ],
+
+        relatedCaseStudies: [
+            {
+                title: "Hotel Wi-Fi Network Upgrade",
+                category: "Hotel Wi-Fi",
+                href: "/case-studies/hotel-wifi-network-upgrade",
+            },
+        ],
     },
 ];
+
+export function getCaseStudy(slug) {
+    if (!slug) return null;
+
+    return caseStudies.find(
+        (caseStudy) => caseStudy.slug === slug
+    );
+}
+
+export function getCaseStudySlugs() {
+    return caseStudies.map((caseStudy) => caseStudy.slug);
+}

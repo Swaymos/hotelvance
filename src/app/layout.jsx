@@ -65,7 +65,6 @@ export default function RootLayout({ children }) {
         className={`bg-white text-gray-900 antialiased ${outfit.className}`}
       >
         <Navbar />
-        <MobileNavbar />
         {children}
         <Footer />
       </body>
