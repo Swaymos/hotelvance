@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import ctaBg from "../public/images/cta-bg.jpg";
+import ctaBg from "../../public/images/cta-bg.jpg";
 import { fadeUp } from "../lib/motion";
 import Link from "next/link";
 

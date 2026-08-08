@@ -2,22 +2,19 @@ import Image from "next/image";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 
-import { getPost, getPostSlugs, getAllPosts } from "../../lib/blog";
+import { getPost, getPostSlugs, getAllPosts } from "../../../lib/blog";
 
-import { parseMDX } from "../../lib/mdx";
+import { parseMDX } from "../../../lib/mdx";
 
-import { createBlogMetadata, absoluteUrl } from "../../lib/seo";
+import { createBlogMetadata, absoluteUrl } from "../../../lib/seo";
 
-import { articleSchema, breadcrumbSchema } from "../../lib/schema";
+import { articleSchema, breadcrumbSchema } from "../../../lib/schema";
 
-import Breadcrumbs from "../../components/blog/Breadcrumbs";
-import ReadingProgress from "../../components/blog/ReadingProgress";
-import TOC from "../../components/blog/TOC";
-import AuthorCard from "../../components/blog/AuthorCard";
-import ShareButtons from "../../components/blog/ShareButtons";
-import RelatedPosts from "../../components/blog/RelatedPosts";
-import NewsletterCTA from "../../components/blog/NewsletterCTA";
-import { ArticleTags } from "../../components/blog/Tags";
+import Breadcrumbs from "../../../components/blog/Breadcrumbs";
+import ReadingProgress from "../../../components/blog/ReadingProgress";
+import TOC from "../../../components/blog/TOC";
+import ShareButtons from "../../../components/blog/ShareButtons";
+import RelatedPosts from "../../../components/blog/RelatedPosts";
 
 export const revalidate = 3600;
 
@@ -163,24 +160,11 @@ export default async function BlogPostPage({ params }) {
           <aside className="hidden lg:block">
             <div className="sticky top-28 space-y-8">
               <TOC />
-
-              <AuthorCard
-                author={{
-                  name: post.author,
-                  role: post.authorRole,
-                  bio: post.authorBio,
-                  image: post.authorImage,
-                }}
-              />
             </div>
           </aside>
         </section>
 
         <RelatedPosts currentPost={post} posts={allPosts} />
-
-        <section className="mx-auto max-w-7xl px-6 pb-20">
-          <NewsletterCTA />
-        </section>
       </main>
     </>
   );

@@ -1,11 +1,11 @@
-import Hero from "./components/Hero";
-import Integration from "./components/Integration";
-import Features from "./components/Features";
-import Platforms from "./components/Platforms";
-import Benefits from "./components/Benefits";
-import Process from "./components/Process";
-import Related from "./components/Related";
-import CTA from "./components/CTA";
+import Hero from "../../components/services/Hero";
+import Integration from "../../components/services/Integration";
+import Features from "../../components/services/Features";
+import Platforms from "../../components/services/Platforms";
+import Benefits from "../../components/services/Benefits";
+import Process from "../../components/services/Process";
+import Related from "../../components/services/Related";
+import CTA from "../../components/services/CTA";
 
 export const metadata = {
   title:

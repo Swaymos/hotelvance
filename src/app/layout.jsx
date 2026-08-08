@@ -1,10 +1,8 @@
 // app/layout.jsx
-import Head from "next/head";
 import "./globals.css";
 import { Outfit } from "next/font/google";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import MobileNavbar from "../../components/MobileNavbar";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const outfit = Outfit({ subsets: ["latin"], display: "swap" });
 

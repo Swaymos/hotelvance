@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getPost } from "../../lib/blog";
+import { getPost } from "../../../lib/blog";
 
 export const runtime = "edge";
 

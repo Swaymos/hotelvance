@@ -3,8 +3,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import hotel from "../public/images/hotels-2.png";
-import gpon from "../public/svg/gpon.svg";
+import hotel from "../../public/images/cta-bg.jpg";
+import gpon from "../../public/svg/gpon.svg";
 import { fadeUp } from "../lib/motion";
 
 const containerVariants = {

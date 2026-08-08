@@ -17,7 +17,7 @@ export const caseStudies = [
         heroDescription:
             "Hotevance assessed and upgraded the property's wireless infrastructure to create a more reliable, scalable and guest-friendly hotel Wi-Fi experience.",
 
-        image: "/images/case-studies/hotel-wifi-network.jpg",
+        image: "/images/hotels-2.png",
 
         alt:
             "Hotel Wi-Fi network infrastructure installed by Hotevance",
@@ -119,7 +119,7 @@ export const caseStudies = [
         heroDescription:
             "Hotevance designed and deployed an IPTV environment that integrated with the hotel's network infrastructure and delivered a modern in-room entertainment experience.",
 
-        image: "/images/case-studies/hotel-iptv.jpg",
+        image: "/images/hotels-2.png",
 
         alt:
             "Hotel IPTV and in-room entertainment system deployed by Hotevance",

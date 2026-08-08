@@ -1,23 +1,22 @@
 import Script from "next/script";
 
-import BlogHero from "../components/blog/BlogHero";
-import FeaturedPost from "../components/blog/FeaturedPost";
-import BlogCard from "../components/blog/BlogCard";
-import Search from "../components/blog/Search";
-import Categories from "../components/blog/Categories";
-import Pagination from "../components/blog/Pagination";
-import NewsletterCTA from "../components/blog/NewsletterCTA";
+import BlogHero from "../../components/blog/BlogHero";
+import FeaturedPost from "../../components/blog/FeaturedPost";
+import BlogCard from "../../components/blog/BlogCard";
+import Search from "../../components/blog/Search";
+import Categories from "../../components/blog/Categories";
+import Pagination from "../../components/blog/Pagination";
 
 import {
   getAllPosts,
   getFeaturedPosts,
   getCategories,
   paginatePosts,
-} from "../lib/blog";
+} from "../../lib/blog";
 
-import { createBlogMetadata, absoluteUrl } from "../lib/seo";
+import { createBlogMetadata, absoluteUrl } from "../../lib/seo";
 
-import { websiteSchema, breadcrumbSchema } from "../lib/schema";
+import { websiteSchema, breadcrumbSchema } from "../../lib/schema";
 
 export const revalidate = 3600;
 

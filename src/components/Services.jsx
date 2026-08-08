@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { fadeInUp, containerVariants, cardVariants } from "../lib/motion";
 import Image from "next/image";
-import gpon from "../public/svg/gpon.svg";
-import wifi from "../public/svg/enterprise.svg";
-import voip from "../public/svg/voip.svg";
-import chat from "../public/svg/chat.svg";
+import gpon from "../../public/svg/gpon.svg";
+import wifi from "../../public/svg/enterprise.svg";
+import voip from "../../public/svg/voip.svg";
+import chat from "../../public/svg/chat.svg";
 
 const specialty = [
   {

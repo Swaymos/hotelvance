@@ -12,10 +12,10 @@ import {
   getCategoryBySlug,
   getPostsByCategory,
   paginatePosts,
-} from "../../../lib/blog";
+} from "../../../../lib/blog";
 
-import { absoluteUrl } from "../../../lib/seo";
-import { breadcrumbSchema } from "../../../lib/schema";
+import { absoluteUrl } from "../../../../lib/seo";
+import { breadcrumbSchema } from "../../../../lib/schema";
 
 export const revalidate = 3600;
 

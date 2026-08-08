@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Building2 } from "lucide-react";
+import * as Icons from "lucide-react";
 
 export const servicesIndustries = ({
   badge = "Industries We Serve",
@@ -9,81 +9,110 @@ export const servicesIndustries = ({
   industries = [],
 }) => {
   return (
-    <section className="bg-slate-50 py-24">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative overflow-hidden bg-slate-950">
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[-200px] top-[-150px] h-[550px] w-[550px] rounded-full bg-primary/10 blur-3xl" />
+
+        <div className="absolute bottom-[-200px] right-[-150px] h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-3xl" />
+
+        <div className="absolute left-1/2 top-1/3 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
+
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.025)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
         {/* Header */}
-
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
+          <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
             {badge}
-          </span>
+          </div>
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 lg:text-5xl">
+          <h2 className="mt-7 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
             {title}
           </h2>
 
-          <p className="mt-6 text-lg leading-8 text-slate-600">{description}</p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+            {description}
+          </p>
         </div>
 
-        {/* Industries Grid */}
-
-        <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        {/* Industries */}
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:mt-20 xl:grid-cols-3">
           {industries.map((industry, index) => {
-            const Icon = industry.icon || Building2;
+            // Resolve Lucide icon from string
+            const Icon =
+              typeof industry.icon === "string"
+                ? Icons[industry.icon] || Icons.Building2
+                : industry.icon || Icons.Building2;
 
             return (
               <article
-                key={index}
-                className="group rounded-3xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"
+                key={industry.title || index}
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5"
               >
-                {/* Icon */}
+                {/* Glow */}
+                <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
 
-                <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 transition duration-300 group-hover:bg-blue-600"></div>
+                {/* Icon */}
+                <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/15">
+                  <Icon
+                    className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110"
+                    strokeWidth={1.8}
+                  />
+                </div>
 
                 {/* Title */}
-
-                <h3 className="mt-8 text-2xl font-semibold text-slate-900">
+                <h3 className="relative mt-7 text-2xl font-semibold tracking-tight text-white">
                   {industry.title}
                 </h3>
 
                 {/* Description */}
-
-                <p className="mt-4 leading-7 text-slate-600">
+                <p className="relative mt-4 leading-7 text-slate-400">
                   {industry.description}
                 </p>
 
                 {/* Features */}
-
                 {industry.points?.length > 0 && (
-                  <ul className="mt-8 space-y-4">
+                  <ul className="relative mt-7 space-y-3">
                     {industry.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
+                      <li
+                        key={`${point}-${i}`}
+                        className="flex items-start gap-3"
+                      >
+                        <Icons.CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
 
-                        <span className="text-slate-600">{point}</span>
+                        <span className="text-sm leading-6 text-slate-300">
+                          {point}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 )}
+
+                {/* Bottom accent */}
+                <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </article>
             );
           })}
         </div>
 
-        {/* Bottom Section */}
+        {/* Hospitality Expertise */}
+        <div className="relative mt-20 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-sm lg:mt-24">
+          <div className="pointer-events-none absolute right-[-150px] top-[-150px] h-[450px] w-[450px] rounded-full bg-primary/10 blur-3xl" />
 
-        <div className="mt-24 overflow-hidden rounded-3xl bg-slate-900">
-          <div className="grid items-center gap-10 p-10 lg:grid-cols-2 lg:p-14">
+          <div className="relative grid items-center gap-12 p-8 sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-14">
+            {/* Text */}
             <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-400">
+              <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                 Hospitality Expertise
               </span>
 
-              <h2 className="mt-4 text-3xl font-bold text-white lg:text-4xl">
+              <h2 className="mt-6 max-w-xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
                 Technology Solutions Tailored to Every Property
               </h2>
 
-              <p className="mt-6 leading-8 text-slate-300">
+              <p className="mt-6 max-w-xl text-base leading-8 text-slate-400 sm:text-lg">
                 Every hotel operates differently. Whether you manage a boutique
                 hotel, luxury resort, serviced apartment, or multi-property
                 hospitality group, Hotevance delivers scalable technology
@@ -92,7 +121,8 @@ export const servicesIndustries = ({
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-5">
+            {/* Property Types */}
+            <div className="grid grid-cols-2 gap-4">
               {[
                 "Hotels",
                 "Luxury Resorts",
@@ -103,13 +133,17 @@ export const servicesIndustries = ({
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-slate-700 bg-slate-800 p-5 text-center font-medium text-white"
+                  className="group flex min-h-[76px] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-center text-sm font-medium text-slate-300 transition-all duration-300 hover:border-primary/30 hover:bg-primary/10 hover:text-white"
                 >
-                  {item}
+                  <span className="transition-transform duration-300 group-hover:scale-105">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
+
+          <div className="absolute bottom-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         </div>
       </div>
     </section>

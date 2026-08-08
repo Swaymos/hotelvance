@@ -15,7 +15,7 @@ import {
 import {
   getLocationBySlug,
   getAllLocationSlugs,
-} from "../../../../data/locationsData";
+} from "../../../data/locationsData";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 

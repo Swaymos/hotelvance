@@ -5,7 +5,8 @@ import readingTime from "reading-time";
 
 const POSTS_PATH = path.join(
     process.cwd(),
-    "content",
+    "src",
+    "data",
     "blog"
 );
 
