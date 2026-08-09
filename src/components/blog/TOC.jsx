@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { List } from "lucide-react";
+import { List, ChevronDown } from "lucide-react";
 
 export default function TOC({
   contentSelector = "article",
@@ -9,6 +9,7 @@ export default function TOC({
 }) {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState("");
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
     const article = document.querySelector(contentSelector);
@@ -56,42 +57,91 @@ export default function TOC({
 
   if (!headings.length) return null;
 
+  function handleClick(id) {
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    // Update URL without causing a page reload
+    window.history.replaceState(null, "", `#${id}`);
+  }
+
   return (
-    <aside className="sticky top-28 hidden lg:block">
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="mb-5 flex items-center gap-2">
-          <List size={18} className="text-primary" />
+    <aside className="sticky top-28">
+      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        {/* Header */}
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-expanded={isOpen}
+          className="flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-900"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+              <List className="h-4 w-4 text-primary" />
+            </div>
 
-          <h2 className="font-semibold text-slate-900 dark:text-white">
-            Table of Contents
-          </h2>
+            <h2 className="font-semibold text-slate-900 dark:text-white">
+              Table of Contents
+            </h2>
+          </div>
+
+          <ChevronDown
+            className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+
+        {/* Content */}
+        <div
+          className={`grid transition-all duration-300 ease-in-out ${
+            isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="min-h-0 overflow-hidden">
+            <nav
+              aria-label="Table of contents"
+              className="border-t border-slate-100 px-5 py-4 dark:border-slate-800"
+            >
+              <ol className="space-y-1">
+                {headings.map((heading) => {
+                  const active = heading.id === activeId;
+
+                  const isH3 = heading.level === "h3";
+
+                  return (
+                    <li key={heading.id} className={isH3 ? "ml-4" : ""}>
+                      <button
+                        type="button"
+                        onClick={() => handleClick(heading.id)}
+                        className={`
+                          block w-full border-l-2 py-2 pl-3
+                          text-left text-sm
+                          leading-5
+                          transition-all
+                          duration-200
+                          ${
+                            active
+                              ? "border-primary font-semibold text-primary"
+                              : "border-transparent text-slate-500 hover:border-primary/30 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                          }
+                        `}
+                      >
+                        {heading.text}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ol>
+            </nav>
+          </div>
         </div>
-
-        <nav aria-label="Table of contents">
-          <ol className="space-y-2">
-            {headings.map((heading) => {
-              const active = heading.id === activeId;
-
-              return (
-                <li
-                  key={heading.id}
-                  className={heading.level === "h3" ? "ml-5" : ""}
-                >
-                  <a
-                    href={`#${heading.id}`}
-                    className={`block border-l-2 py-1 pl-3 text-sm transition ${
-                      active
-                        ? "border-primary font-semibold text-primary"
-                        : "border-transparent text-slate-500 hover:border-primary/30 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                    }`}
-                  >
-                    {heading.text}
-                  </a>
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
       </div>
     </aside>
   );

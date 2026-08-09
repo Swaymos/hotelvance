@@ -53,10 +53,6 @@ export default async function BlogPostPage({ params }) {
 
   const breadcrumbs = [
     {
-      label: "Home",
-      href: "/",
-    },
-    {
       label: "Blog",
       href: "/blog",
     },

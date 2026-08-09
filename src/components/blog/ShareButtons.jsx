@@ -3,26 +3,62 @@
 import { useEffect, useState } from "react";
 import { Share2, Link2, Check, Linkedin, Facebook } from "lucide-react";
 
-export default function ShareButtons({ title, url, description = "" }) {
+export default function ShareButtons({
+  title = "",
+  url = "",
+  description = "",
+}) {
   const [copied, setCopied] = useState(false);
   const [canNativeShare, setCanNativeShare] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
 
   /*
-   * navigator is only checked after hydration.
-   * This prevents server/client HTML mismatches.
+   * Get the actual browser URL after hydration.
+   *
+   * This also handles cases where the parent passes:
+   * /blog/gpon-fiber-hotels
+   *
+   * instead of:
+   * https://hotevance.com/blog/gpon-fiber-hotels
    */
   useEffect(() => {
-    if (typeof navigator !== "undefined") {
-      setCanNativeShare(typeof navigator.share === "function");
-    }
-  }, []);
+    if (typeof window === "undefined") return;
 
-  const encodedUrl = encodeURIComponent(url);
-  const encodedTitle = encodeURIComponent(title);
+    const absoluteUrl = url
+      ? new URL(url, window.location.origin).href
+      : window.location.href;
 
+    setShareUrl(absoluteUrl);
+
+    setCanNativeShare(
+      typeof navigator !== "undefined" && typeof navigator.share === "function"
+    );
+  }, [url]);
+
+  /*
+   * Copy link
+   */
   async function copyLink() {
+    if (!shareUrl) return;
+
     try {
-      await navigator.clipboard.writeText(url);
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        // Fallback for browsers where Clipboard API is unavailable
+        const textarea = document.createElement("textarea");
+
+        textarea.value = shareUrl;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+        document.execCommand("copy");
+
+        document.body.removeChild(textarea);
+      }
 
       setCopied(true);
 
@@ -34,47 +70,62 @@ export default function ShareButtons({ title, url, description = "" }) {
     }
   }
 
+  /*
+   * Native device sharing
+   */
   async function nativeShare() {
-    if (!navigator.share) return;
+    if (!shareUrl || !navigator.share) return;
 
     try {
       await navigator.share({
         title,
         text: description,
-        url,
+        url: shareUrl,
       });
     } catch (error) {
-      // User cancelled sharing.
+      // User cancelled the share dialog.
+      if (error?.name !== "AbortError") {
+        console.error("Native sharing failed:", error);
+      }
     }
   }
 
+  /*
+   * Social sharing URLs
+   */
   const socials = [
     {
       name: "X",
+      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+        shareUrl
+      )}&text=${encodeURIComponent(title)}`,
       icon: "X",
-      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     },
     {
       name: "LinkedIn",
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        shareUrl
+      )}`,
       icon: Linkedin,
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
     },
     {
       name: "Facebook",
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        shareUrl
+      )}`,
       icon: Facebook,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     },
   ];
 
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-7 sm:p-8">
+    <section className="relative mt-16 overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-6 md:p-8">
       {/* Background glow */}
-      <div className="pointer-events-none absolute right-[-100px] top-[-120px] -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
 
       {/* Grid */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      <div className="pointer-events-none absolute inset-0 -z-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
-      <div className="relative z-0 flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
+      <div className="relative z-10 flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
         {/* Left */}
         <div>
           <div className="flex items-center gap-3">
@@ -95,28 +146,23 @@ export default function ShareButtons({ title, url, description = "" }) {
         {/* Right */}
         <div className="flex flex-wrap gap-3">
           {/* Native Share */}
-          {canNativeShare && (
-            <button
-              type="button"
-              onClick={nativeShare}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-300 transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:text-white"
-            >
-              <Share2 size={18} className="text-primary" />
-              Share
-            </button>
-          )}
 
-          {/* Socials */}
+          {/* Social buttons */}
           {socials.map((social) => {
             const Icon = social.icon;
 
             return (
               <a
                 key={social.name}
-                href={social.href}
+                href={shareUrl ? social.href : "#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Share on ${social.name}`}
+                onClick={(event) => {
+                  if (!shareUrl) {
+                    event.preventDefault();
+                  }
+                }}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-300 transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:text-white"
               >
                 {social.icon === "X" ? (
@@ -136,7 +182,8 @@ export default function ShareButtons({ title, url, description = "" }) {
           <button
             type="button"
             onClick={copyLink}
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-slate-950 transition-all duration-300 hover:brightness-110"
+            disabled={!shareUrl}
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-slate-950 transition-all duration-300 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {copied ? (
               <>
