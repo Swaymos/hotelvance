@@ -32,8 +32,8 @@ export async function generateMetadata({ searchParams }) {
   const params = await searchParams;
 
   const page = Number(params?.page || 1);
-  const search = params?.search || "";
-  const category = params?.category || "";
+  const search = params?.search?.trim() || "";
+  const category = params?.category?.trim() || "";
 
   const titleParts = [];
 
@@ -63,24 +63,62 @@ export async function generateMetadata({ searchParams }) {
 
   return {
     title,
+
     description,
+
+    keywords: [
+      "hotel technology blog",
+      "hotel technology",
+      "hotel Wi-Fi",
+      "hotel GPON",
+      "hotel IPTV",
+      "hotel PMS integration",
+      "hotel networking",
+      "managed IT for hotels",
+      "hospitality technology",
+      "hotel IT",
+    ],
+
     alternates: {
-      canonical:
-        page > 1 || search || category
-          ? absoluteUrl("/blog")
-          : absoluteUrl("/blog"),
+      canonical: "/blog",
     },
+
     openGraph: {
       title,
+
       description,
-      url: absoluteUrl("/blog"),
-      type: "website",
+
+      url: "/blog",
+
       siteName: "Hotevance",
+
+      locale: "en_NG",
+
+      type: "website",
+
+      images: [
+        {
+          url: "/images/Hotels.png",
+          width: 1200,
+          height: 630,
+          alt: "Hotevance Hotel Technology Blog",
+        },
+      ],
     },
+
     twitter: {
       card: "summary_large_image",
+
       title,
+
       description,
+
+      images: ["/images/Hotels.png"],
+    },
+
+    robots: {
+      index: !search && !category && page === 1,
+      follow: true,
     },
   };
 }
