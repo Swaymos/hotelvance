@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { ArrowRight, Linkedin, Mail, MapPin, Phone, Wifi } from "lucide-react";
+import Image from "next/image";
+import logo from "../../public/svg/logo-primary.svg";
 
 const services = [
   {
@@ -118,9 +120,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="max-w-sm">
             <Link href="/" aria-label="Hotevance home" className="inline-block">
-              <span className="text-3xl font-bold tracking-[-0.05em]">
-                Hote<span className="text-[#58AEBC]">vance</span>
-              </span>
+              <Image src={logo} width={140} height={40} alt="primary logo" />
             </Link>
 
             <p className="mt-5 text-sm leading-7 text-white/55">

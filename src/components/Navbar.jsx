@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import logo from "../../public/svg/logo-dark.svg";
 import {
   ChevronDown,
   Menu,
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 
 import locations from "../data/locationsData";
+import Image from "next/image";
 
 const services = [
   {
@@ -131,12 +133,7 @@ export default function Navbar() {
             className="group flex shrink-0 items-center"
             aria-label="Hotevance home"
           >
-            <span className="text-[25px] font-bold tracking-[-0.045em] text-slate-950">
-              Hote
-              <span className="text-[#58AEBC] transition-colors duration-300 group-hover:text-[#3d8996]">
-                vance
-              </span>
-            </span>
+            <Image src={logo} width={140} height={40} alt="primary logo" />
           </Link>
 
           {/* =================================================
