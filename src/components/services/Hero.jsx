@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import mainBg from "../../../public/images/Hotels.png";
 import {
   ArrowRight,
   CheckCircle2,
@@ -163,7 +164,7 @@ export default function Hero() {
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-2 shadow-2xl backdrop-blur-sm">
               <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900">
                 <Image
-                  src="/images/services/pms-dashboard.webp"
+                  src={mainBg}
                   alt="Hotel PMS integration dashboard connecting Wi-Fi, IPTV, VoIP and guest room automation"
                   width={700}
                   height={700}
