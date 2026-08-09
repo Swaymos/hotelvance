@@ -15,10 +15,14 @@ import {
   Sparkles,
 } from "lucide-react";
 
+// app/industries/page.jsx
+
 export const metadata = {
   title: "Hospitality Technology Solutions by Industry | Hotevance",
+
   description:
     "Hotevance provides reliable hotel technology solutions for hotels, resorts, serviced apartments, restaurants, and hospitality businesses across Nigeria.",
+
   keywords: [
     "hospitality technology solutions",
     "hotel technology Nigeria",
@@ -28,23 +32,51 @@ export const metadata = {
     "hotel network solutions",
     "resort technology solutions",
     "hotel technology company",
+    "serviced apartment technology",
+    "restaurant technology solutions",
   ],
+
   alternates: {
-    canonical: "https://hotevance.com/industries",
+    canonical: "/industries",
   },
+
   openGraph: {
     title: "Hospitality Technology Solutions by Industry | Hotevance",
+
     description:
       "Technology infrastructure and managed IT solutions built for hotels, resorts, serviced apartments, and hospitality businesses.",
-    url: "https://hotevance.com/industries",
+
+    url: "/industries",
+
     siteName: "Hotevance",
+
+    images: [
+      {
+        url: "/images/Hotels.png",
+        width: 1200,
+        height: 630,
+        alt: "Hotevance Hospitality Technology Solutions",
+      },
+    ],
+
+    locale: "en_NG",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
+
     title: "Hospitality Technology Solutions by Industry | Hotevance",
+
     description:
       "Hotel Wi-Fi, IPTV, fiber networking, VoIP, PMS integration, and managed IT solutions for hospitality businesses.",
+
+    images: ["/images/Hotels.png"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

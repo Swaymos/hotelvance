@@ -17,8 +17,10 @@ import {
 
 export const metadata = {
   title: "Hotel Technology Solutions in Nigeria & Africa | Hotevance",
+
   description:
-    "Hotevance provides hotel technology solutions including Wi-Fi, GPON fiber, IPTV, VoIP, PMS integration, security and managed IT for hotels across Nigeria and Africa.",
+    "Hotevance provides hotel technology solutions including Wi-Fi, GPON fiber, IPTV, VoIP, PMS integration, security, and managed IT for hotels across Nigeria and Africa.",
+
   keywords: [
     "hotel technology solutions Nigeria",
     "hotel IT solutions Nigeria",
@@ -29,23 +31,50 @@ export const metadata = {
     "hotel GPON",
     "hotel PMS integration",
     "managed hotel IT",
+    "hotel technology Africa",
   ],
+
   alternates: {
-    canonical: "https://hotevance.com/",
+    canonical: "/",
   },
+
   openGraph: {
     title: "Hotel Technology Solutions in Nigeria & Africa | Hotevance",
+
     description:
-      "Reliable hotel Wi-Fi, fiber, IPTV, VoIP, PMS integration, security and managed IT solutions designed for modern hospitality.",
-    url: "https://hotevance.com/",
+      "Reliable hotel Wi-Fi, fiber, IPTV, VoIP, PMS integration, security, and managed IT solutions designed for modern hospitality.",
+
+    url: "/",
+
     siteName: "Hotevance",
+
+    images: [
+      {
+        url: "/images/Hotels.png",
+        width: 1200,
+        height: 630,
+        alt: "Hotevance Hotel Technology Solutions",
+      },
+    ],
+
+    locale: "en_NG",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
+
     title: "Hotel Technology Solutions in Nigeria & Africa | Hotevance",
+
     description:
-      "Technology infrastructure designed for hotels, resorts and hospitality businesses.",
+      "Technology infrastructure designed for hotels, resorts, and hospitality businesses.",
+
+    images: ["/images/Hotels.png"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

@@ -12,11 +12,13 @@ import {
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
+// app/locations/page.jsx
+
 export const metadata = {
   title: "Hotel Technology Solutions Across Nigeria | Hotevance",
 
   description:
-    "Hotevance provides hotel Wi-Fi, fiber networking, IPTV, PMS integration and managed IT solutions for hotels and hospitality businesses across Nigeria.",
+    "Hotevance provides hotel Wi-Fi, fiber networking, IPTV, PMS integration, and managed IT solutions for hotels and hospitality businesses across Nigeria.",
 
   keywords: [
     "hotel technology Nigeria",
@@ -34,23 +36,41 @@ export const metadata = {
   ],
 
   alternates: {
-    canonical: `${SITE_URL}/locations`,
+    canonical: "/locations",
   },
 
   openGraph: {
     title: "Hotel Technology Solutions Across Nigeria | Hotevance",
+
     description:
-      "Hotel Wi-Fi, networking, fiber, IPTV and managed IT solutions for hospitality businesses across Nigeria.",
-    url: `${SITE_URL}/locations`,
+      "Hotel Wi-Fi, networking, fiber, IPTV, and managed IT solutions for hospitality businesses across Nigeria.",
+
+    url: "/locations",
+
     siteName: "Hotevance",
+
+    images: [
+      {
+        url: "/images/Hotels.png",
+        width: 1200,
+        height: 630,
+        alt: "Hotevance Hotel Technology Solutions Across Nigeria",
+      },
+    ],
+
+    locale: "en_NG",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
+
     title: "Hotel Technology Solutions Across Nigeria | Hotevance",
+
     description:
       "Hotevance delivers hotel technology and managed IT solutions across Nigeria.",
+
+    images: ["/images/Hotels.png"],
   },
 
   robots: {

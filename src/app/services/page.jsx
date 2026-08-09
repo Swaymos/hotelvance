@@ -7,11 +7,14 @@ import Process from "../../components/services/Process";
 import Related from "../../components/services/Related";
 import CTA from "../../components/services/CTA";
 
+// app/services/pms-integration/page.jsx
+
 export const metadata = {
   title:
     "Hotel PMS Integration Services | Property Management System Integration | Hotevance",
+
   description:
-    "Hotevance provides Hotel PMS Integration services that connect your Property Management System with hotel Wi-Fi, IPTV, VoIP, smart room automation, access control, payment systems and hospitality technologies.",
+    "Hotevance provides Hotel PMS Integration services that connect your Property Management System with hotel Wi-Fi, IPTV, VoIP, smart room automation, access control, payment systems, and hospitality technologies.",
 
   keywords: [
     "Hotel PMS Integration",
@@ -28,16 +31,21 @@ export const metadata = {
   ],
 
   alternates: {
-    canonical: "https://hotevance.com/services/pms-integration",
+    canonical: "/services/pms-integration",
   },
 
   openGraph: {
     title: "Hotel PMS Integration Services | Hotevance",
+
     description:
-      "Connect your Property Management System with hotel Wi-Fi, IPTV, VoIP and smart hotel technologies.",
-    url: "https://hotevance.com/services/pms-integration",
+      "Connect your Property Management System with hotel Wi-Fi, IPTV, VoIP, and smart hotel technologies.",
+
+    url: "/services/pms-integration",
+
     siteName: "Hotevance",
-    locale: "en_US",
+
+    locale: "en_NG",
+
     type: "website",
 
     images: [
@@ -45,19 +53,26 @@ export const metadata = {
         url: "/images/og/pms-integration.jpg",
         width: 1200,
         height: 630,
-        alt: "Hotel PMS Integration Services",
+        alt: "Hotel PMS Integration Services by Hotevance",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
+
     title: "Hotel PMS Integration Services | Hotevance",
+
     description: "Professional Hotel PMS Integration for modern hotels.",
+
     images: ["/images/og/pms-integration.jpg"],
   },
-};
 
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 export default function PMSIntegrationPage() {
   const schema = {
     "@context": "https://schema.org",
