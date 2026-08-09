@@ -288,7 +288,7 @@ export default function HomePage() {
               {/* CTAs */}
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  href="/hotel-technology-audit"
+                  href="/hotel-wifi-audit"
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#58AEBC] px-7 py-4 font-medium text-[#0F1020] shadow-lg shadow-black/20 transition-all duration-300 hover:bg-white hover:shadow-xl"
                 >
                   Request a Free Hotel Technology Audit
@@ -642,7 +642,7 @@ export default function HomePage() {
             </p>
 
             <Link
-              href="/hotel-technology-audit"
+              href="/hotel-wifi-audit"
               className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#0F1020] px-7 py-4 font-medium text-white transition hover:bg-white hover:text-[#0F1020]"
             >
               Request Your Free Hotel Technology Audit
@@ -698,7 +698,7 @@ export default function HomePage() {
             </p>
 
             <Link
-              href="/hotel-technology-audit"
+              href="/hotel-wifi-audit"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#0F1020] px-7 py-4 font-medium text-white transition hover:bg-[#58AEBC] hover:text-[#0F1020]"
             >
               Request a Free Hotel Technology Audit
