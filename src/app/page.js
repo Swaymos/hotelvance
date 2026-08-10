@@ -13,8 +13,7 @@ import {
   Gauge,
   Cable,
   Hotel,
-} from "lucide-react";
-import Head from "next/head";
+} from "lucide-react"
 
 export const metadata = {
   title: "Hotel Technology Solutions in Nigeria & Africa | Hotevance",
@@ -265,9 +264,7 @@ export default function HomePage() {
         }}
       />
 
-      <Head>
-        <meta name="google-site-verification" content="rMmRTsVzPP-fMgyGaW7eEQ-wJqwV5aafb-DtpcSRloE" />
-      </Head>
+
 
       <main className="overflow-hidden">
         {/* HERO */}
