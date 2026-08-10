@@ -5,7 +5,6 @@ import { Outfit } from "next/font/google";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Head from "next/head";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -101,12 +100,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-NG">
-      <Head>
+      <head>
         <meta
           name="google-site-verification"
           content="rMmRTsVzPP-fMgyGaW7eEQ-wJqwV5aafb-DtpcSRloE"
         />
-      </Head>
+      </head>
       <body
         className={`${outfit.variable} ${outfit.className} bg-white text-gray-900 antialiased`}
       >
