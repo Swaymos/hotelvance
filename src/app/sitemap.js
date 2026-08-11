@@ -53,7 +53,7 @@ export default function sitemap() {
         },
 
         {
-            url: `${ SITE_URL } /services`,
+            url: `${ SITE_URL }/services`,
             lastModified: now,
             changeFrequency: "monthly",
             priority: 0.9,
