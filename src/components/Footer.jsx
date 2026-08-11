@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { ArrowRight, Linkedin, Mail, MapPin, Phone, Wifi } from "lucide-react";
 import Image from "next/image";
+
 import logo from "../../public/svg/logo-primary.svg";
+
+/* =========================================================
+   SERVICES
+========================================================= */
 
 const services = [
   {
@@ -32,6 +37,33 @@ const services = [
   },
 ];
 
+/* =========================================================
+   TOOLS
+========================================================= */
+
+const tools = [
+  {
+    name: "Hotel Wi-Fi Health Checker",
+    href: "/tools/hotel-wifi-health-checker",
+  },
+  {
+    name: "Hotel Technology Audit",
+    href: "/tools/hotel-technology-audit",
+  },
+  {
+    name: "Hotel Wi-Fi Bandwidth Calculator",
+    href: "/tools/hotel-wifi-bandwidth-calculator",
+  },
+  {
+    name: "Wi-Fi Access Point Calculator",
+    href: "/tools/hotel-wifi-access-point-calculator",
+  },
+];
+
+/* =========================================================
+   COMPANY LINKS
+========================================================= */
+
 const companyLinks = [
   {
     name: "About Hotevance",
@@ -51,6 +83,10 @@ const companyLinks = [
   },
 ];
 
+/* =========================================================
+   RESOURCE LINKS
+========================================================= */
+
 const resourceLinks = [
   {
     name: "Hotel Technology Blog",
@@ -58,7 +94,7 @@ const resourceLinks = [
   },
   {
     name: "Hotel Wi-Fi Guide",
-    href: "/blog/the-ultimate-hotel-wifi-guide",
+    href: "/blog/hotel-wifi-guide",
   },
   {
     name: "FAQs",
@@ -70,16 +106,25 @@ const resourceLinks = [
   },
 ];
 
+/* =========================================================
+   FOOTER
+========================================================= */
+
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-[#0F1020] text-white">
-      {/* CTA */}
+    <footer className="bg-[#0F1020] text-white">
+      {/* =====================================================
+          CTA
+      ====================================================== */}
+
       <section className="border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-[#58AEBC] px-6 py-12 sm:px-10 lg:px-14">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-[#58AEBC] px-6 py-10 sm:px-10 sm:py-12 lg:px-12">
             {/* Decorative elements */}
+
             <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+
+            <div className="pointer-events-none absolute -bottom-24 left-1/3 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
 
             <div className="relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
@@ -114,13 +159,19 @@ export default function Footer() {
         </div>
       </section>
 
-      {/* Main footer */}
+      {/* =====================================================
+          MAIN FOOTER
+      ====================================================== */}
+
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          {/* Brand */}
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
+          {/* =================================================
+              BRAND
+          ================================================== */}
+
           <div className="max-w-sm">
             <Link href="/" aria-label="Hotevance home" className="inline-block">
-              <Image src={logo} width={140} height={40} alt="primary logo" />
+              <Image src={logo} width={140} height={40} alt="Hotevance" />
             </Link>
 
             <p className="mt-5 text-sm leading-7 text-white/55">
@@ -135,6 +186,7 @@ export default function Footer() {
             </p>
 
             {/* Social */}
+
             <div className="mt-7 flex items-center gap-3">
               <a
                 href="https://www.linkedin.com/company/hotevance/"
@@ -148,7 +200,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* =================================================
+              SERVICES
+          ================================================== */}
+
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Hotel Technology
@@ -168,7 +223,44 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* =================================================
+              TOOLS
+          ================================================== */}
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+              Hotel Tools
+            </h3>
+
+            <ul className="mt-5 space-y-3.5">
+              {tools.map((tool) => (
+                <li key={tool.href}>
+                  <Link
+                    href={tool.href}
+                    className="text-sm leading-5 text-white/55 transition hover:text-[#58AEBC]"
+                  >
+                    {tool.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/tools"
+              className="group mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-[#58AEBC] transition hover:text-white"
+            >
+              View all tools
+              <ArrowRight
+                size={13}
+                className="transition-transform group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
+
+          {/* =================================================
+              COMPANY
+          ================================================== */}
+
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Company
@@ -188,7 +280,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* =================================================
+              RESOURCES
+          ================================================== */}
+
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Resources
@@ -209,8 +304,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Contact information */}
+        {/* =================================================
+            CONTACT INFORMATION
+        ================================================== */}
+
         <div className="mt-14 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-3">
+          {/* Email */}
+
           <a
             href="mailto:hello@hotevance.com"
             className="group flex items-start gap-3"
@@ -230,6 +330,8 @@ export default function Footer() {
             </div>
           </a>
 
+          {/* Phone */}
+
           <a href="tel:+2340000000000" className="group flex items-start gap-3">
             <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 text-[#58AEBC] transition group-hover:bg-[#58AEBC] group-hover:text-white">
               <Phone size={16} />
@@ -245,6 +347,8 @@ export default function Footer() {
               </span>
             </div>
           </a>
+
+          {/* Location */}
 
           <div className="flex items-start gap-3">
             <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 text-[#58AEBC]">
@@ -264,7 +368,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
+      {/* =====================================================
+          BOTTOM BAR
+      ====================================================== */}
+
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <p className="text-xs text-white/35">
