@@ -15,10 +15,10 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 // Replace these with Hotevance's actual contact details.
 const CONTACT = {
-  email: "hello@hotevance.com",
-  phone: "+234 000 000 0000",
-  whatsapp: "2340000000000",
-  address: "Nigeria",
+  email: "wecare@hotevance.com",
+  phone: "+2349085444555",
+  whatsapp: "+2349085444555",
+  address: "Hotevance Limited Port Harcourt, Rivers State, Nigeria",
 };
 
 export const metadata = {
