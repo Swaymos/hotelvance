@@ -1,27 +1,4 @@
-import {
-    Tv,
-    PlayCircle,
-    Wifi,
-    Monitor,
-    ShieldCheck,
-    Globe,
-    Hotel,
-    Building2,
-    Building,
-    Landmark,
-    Home,
-    Briefcase,
-    Users,
-    Star,
-    Clock3,
-    TrendingUp,
-    Headphones,
-    Search,
-    ClipboardCheck,
-    Wrench,
-    Settings,
-    Smartphone,
-} from "lucide-react";
+
 
 const iptv = {
     slug: "hotel-iptv",
@@ -56,7 +33,7 @@ const iptv = {
         description:
             "Deliver premium in-room entertainment with personalized guest experiences, interactive hotel services, digital signage and seamless Property Management System integration.",
 
-        image: "/images/services/hotel-iptv.webp",
+        image: "/images/hotels-2.png",
 
         breadcrumbs: [
             {
@@ -129,7 +106,7 @@ const iptv = {
 
         features: [
             {
-                icon: Tv,
+                icon: "Tv",
                 title: "Interactive Television",
                 description:
                     "Provide guests with an intuitive TV experience.",
@@ -142,7 +119,7 @@ const iptv = {
             },
 
             {
-                icon: PlayCircle,
+                icon: "PlayCircle",
                 title: "Guest Casting",
                 description:
                     "Allow guests to securely stream content from their personal devices.",
@@ -155,7 +132,7 @@ const iptv = {
             },
 
             {
-                icon: Settings,
+                icon: "Settings",
                 title: "PMS Integration",
                 description:
                     "Automatically personalize guest experiences through your PMS.",
@@ -168,7 +145,7 @@ const iptv = {
             },
 
             {
-                icon: Globe,
+                icon: "Globe",
                 title: "Digital Signage",
                 description:
                     "Display hotel promotions, events and information.",
@@ -181,7 +158,7 @@ const iptv = {
             },
 
             {
-                icon: Smartphone,
+                icon: "Smartphone",
                 title: "Mobile Integration",
                 description:
                     "Connect mobile devices with in-room entertainment.",
@@ -194,7 +171,7 @@ const iptv = {
             },
 
             {
-                icon: ShieldCheck,
+                icon: "ShieldCheck",
                 title: "Secure Platform",
                 description:
                     "Enterprise-grade security for guest privacy and hotel operations.",
@@ -216,7 +193,7 @@ const iptv = {
 
         benefits: [
             {
-                icon: Users,
+                icon: "Users",
                 title: "Better Guest Experience",
 
                 description:
@@ -230,7 +207,7 @@ const iptv = {
             },
 
             {
-                icon: TrendingUp,
+                icon: "TrendingUp",
                 title: "Increase Revenue",
 
                 description:
@@ -244,7 +221,7 @@ const iptv = {
             },
 
             {
-                icon: Star,
+                icon: "Star",
                 title: "Strengthen Brand",
 
                 description:
@@ -258,7 +235,7 @@ const iptv = {
             },
 
             {
-                icon: Clock3,
+                icon: "Clock3",
                 title: "Easy Management",
 
                 description:
@@ -351,31 +328,31 @@ const iptv = {
 
         steps: [
             {
-                icon: Search,
+                icon: "Search",
                 title: "Assessment",
                 description:
                     "Evaluate your hotel's television infrastructure.",
             },
             {
-                icon: ClipboardCheck,
+                icon: "ClipboardCheck",
                 title: "Solution Design",
                 description:
                     "Design a tailored IPTV architecture.",
             },
             {
-                icon: Wrench,
+                icon: "Wrench",
                 title: "Installation",
                 description:
                     "Deploy servers, TVs and content systems.",
             },
             {
-                icon: Monitor,
+                icon: "Monitor",
                 title: "Configuration",
                 description:
                     "Configure channels, branding and integrations.",
             },
             {
-                icon: Headphones,
+                icon: "Headphones",
                 title: "Support",
                 description:
                     "Provide monitoring and ongoing technical support.",
@@ -391,32 +368,32 @@ const iptv = {
 
         industries: [
             {
-                icon: Hotel,
+                icon: "Hotel",
                 title: "Hotels",
                 description: "Modern guest entertainment.",
             },
             {
-                icon: Landmark,
+                icon: "Landmark",
                 title: "Luxury Resorts",
                 description: "Premium digital guest experiences.",
             },
             {
-                icon: Building,
+                icon: "Building",
                 title: "Boutique Hotels",
                 description: "Affordable IPTV solutions.",
             },
             {
-                icon: Building2,
+                icon: "Building2",
                 title: "Hotel Chains",
                 description: "Centralized content management.",
             },
             {
-                icon: Home,
+                icon: "Home",
                 title: "Serviced Apartments",
                 description: "Home-like entertainment.",
             },
             {
-                icon: Briefcase,
+                icon: "Briefcase",
                 title: "Conference Hotels",
                 description: "Information displays and signage.",
             },

@@ -1,26 +1,4 @@
-import {
-    Server,
-    ShieldCheck,
-    MonitorSmartphone,
-    Network,
-    Cloud,
-    HardDrive,
-    Database,
-    Activity,
-    Users,
-    Clock3,
-    TrendingUp,
-    Search,
-    ClipboardCheck,
-    Wrench,
-    Headphones,
-    Hotel,
-    Building,
-    Building2,
-    Landmark,
-    Home,
-    Briefcase,
-} from "lucide-react";
+
 
 const managedIT = {
     slug: "managed-it-services",
@@ -56,7 +34,7 @@ const managedIT = {
         description:
             "Keep your hotel's technology running efficiently with proactive monitoring, cybersecurity, infrastructure management and dedicated IT support from Hotevance.",
 
-        image: "/images/services/managed-it.webp",
+        image: "/images/hotels-2.png",
 
         breadcrumbs: [
             {

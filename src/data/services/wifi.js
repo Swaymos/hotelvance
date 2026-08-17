@@ -1,26 +1,3 @@
-import {
-    Wifi,
-    ShieldCheck,
-    Gauge,
-    Users,
-    Globe,
-    Network,
-    Router,
-    BarChart3,
-    Signal,
-    Clock3,
-    TrendingUp,
-    Headphones,
-    Search,
-    ClipboardCheck,
-    Wrench,
-    Hotel,
-    Building2,
-    Building,
-    Landmark,
-    Home,
-    Briefcase,
-} from "lucide-react";
 
 const wifi = {
     slug: "hotel-wifi",
@@ -56,7 +33,7 @@ const wifi = {
         description:
             "Deliver fast, secure and reliable wireless connectivity for guests, staff and hotel operations with enterprise-grade Wi-Fi designed specifically for the hospitality industry.",
 
-        image: "/images/services/hotel-wifi.webp",
+        image: "/images/hotels-2.png",
 
         breadcrumbs: [
             { label: "Home", href: "/" },
@@ -121,7 +98,7 @@ const wifi = {
 
         features: [
             {
-                icon: Wifi,
+                icon: "Wifi",
                 title: "Guest Wi-Fi",
                 description:
                     "Reliable wireless internet for guests across the entire property.",
@@ -134,7 +111,7 @@ const wifi = {
             },
 
             {
-                icon: Router,
+                icon: "Router",
                 title: "Captive Portal",
                 description:
                     "Branded guest login with flexible authentication methods.",
@@ -147,7 +124,7 @@ const wifi = {
             },
 
             {
-                icon: ShieldCheck,
+                icon: "ShieldCheck",
                 title: "Network Security",
                 description:
                     "Protect guests and hotel systems with enterprise-grade security.",
@@ -160,7 +137,7 @@ const wifi = {
             },
 
             {
-                icon: Gauge,
+                icon: "Gauge",
                 title: "Bandwidth Management",
                 description:
                     "Allocate bandwidth fairly across users and devices.",
@@ -173,7 +150,7 @@ const wifi = {
             },
 
             {
-                icon: BarChart3,
+                icon: "BarChart3",
                 title: "Wi-Fi Analytics",
                 description:
                     "Understand network usage and guest behaviour.",
@@ -186,7 +163,7 @@ const wifi = {
             },
 
             {
-                icon: Globe,
+                icon: "Globe",
                 title: "Cloud Management",
                 description:
                     "Monitor and manage your network from anywhere.",
@@ -208,7 +185,7 @@ const wifi = {
 
         benefits: [
             {
-                icon: Users,
+                icon: "Users",
                 title: "Better Guest Experience",
                 description:
                     "Fast internet improves reviews and guest loyalty.",
@@ -221,7 +198,7 @@ const wifi = {
             },
 
             {
-                icon: TrendingUp,
+                icon: "TrendingUp",
                 title: "Operational Efficiency",
                 description:
                     "Support hotel operations with dependable wireless infrastructure.",
@@ -234,7 +211,7 @@ const wifi = {
             },
 
             {
-                icon: ShieldCheck,
+                icon: "ShieldCheck",
                 title: "Improved Security",
                 description:
                     "Separate guest and hotel networks for enhanced protection.",
@@ -247,7 +224,7 @@ const wifi = {
             },
 
             {
-                icon: Clock3,
+                icon: "Clock3",
                 title: "Less Downtime",
                 description:
                     "Proactive monitoring reduces outages and disruptions.",
@@ -325,27 +302,27 @@ const wifi = {
 
         steps: [
             {
-                icon: Search,
+                icon: "Search",
                 title: "Site Survey",
                 description: "Assess coverage requirements and interference.",
             },
             {
-                icon: ClipboardCheck,
+                icon: "ClipboardCheck",
                 title: "Network Design",
                 description: "Design a hospitality-optimized wireless solution.",
             },
             {
-                icon: Wrench,
+                icon: "Wrench",
                 title: "Installation",
                 description: "Deploy access points, switches and controllers.",
             },
             {
-                icon: Signal,
+                icon: "Signal",
                 title: "Optimization",
                 description: "Fine-tune coverage and performance.",
             },
             {
-                icon: Headphones,
+                icon: "Headphones",
                 title: "Monitoring & Support",
                 description: "Continuous monitoring and maintenance.",
             },
@@ -360,32 +337,32 @@ const wifi = {
 
         industries: [
             {
-                icon: Hotel,
+                icon: "Hotel",
                 title: "Hotels",
                 description: "Reliable guest connectivity.",
             },
             {
-                icon: Landmark,
+                icon: "Landmark",
                 title: "Luxury Resorts",
                 description: "Premium wireless experiences.",
             },
             {
-                icon: Building,
+                icon: "Building",
                 title: "Boutique Hotels",
                 description: "Cost-effective enterprise Wi-Fi.",
             },
             {
-                icon: Building2,
+                icon: "Building2",
                 title: "Hotel Groups",
                 description: "Multi-property networking.",
             },
             {
-                icon: Home,
+                icon: "Home",
                 title: "Serviced Apartments",
                 description: "Always-connected residents.",
             },
             {
-                icon: Briefcase,
+                icon: "Briefcase",
                 title: "Conference Centres",
                 description: "High-density event Wi-Fi.",
             },

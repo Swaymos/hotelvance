@@ -1,16 +1,5 @@
 // data/services.js
 
-import {
-    Database,
-    Wifi,
-    Tv,
-    Phone,
-    Server,
-    Shield,
-    Network,
-    Cable,
-} from "lucide-react";
-
 const services = [
     {
         slug: "pms-integration",
@@ -99,44 +88,6 @@ const services = [
             "Fiber Backbone",
             "High Bandwidth",
             "Future Ready",
-        ],
-    },
-
-    {
-        slug: "network-infrastructure",
-
-        title: "Network Infrastructure",
-
-        short:
-            "Enterprise switching, routing, structured cabling and wireless infrastructure built for hotels.",
-
-        href: "/services/network-infrastructure",
-
-        icon: "Network",
-
-        features: [
-            "Switching",
-            "Routing",
-            "Structured Cabling",
-        ],
-    },
-
-    {
-        slug: "cctv-access-control",
-
-        title: "CCTV & Access Control",
-
-        short:
-            "Protect guests, staff and assets with intelligent surveillance and secure access control solutions.",
-
-        href: "/services/cctv-access-control",
-
-        icon: "Shield",
-
-        features: [
-            "IP Cameras",
-            "Access Control",
-            "Remote Monitoring",
         ],
     },
 

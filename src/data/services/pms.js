@@ -33,7 +33,7 @@ const pms = {
         description:
             "Integrate your Property Management System with Wi-Fi, IPTV, VoIP, billing, smart room technology and hospitality applications to automate operations and improve guest experiences.",
 
-        image: "/public/images/cta-bg.jpg",
+        image: "/images/hotels-2.png",
 
         breadcrumbs: [
             {

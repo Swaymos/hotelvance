@@ -1,26 +1,3 @@
-import {
-    Phone,
-    PhoneCall,
-    Headphones,
-    Users,
-    Building2,
-    ShieldCheck,
-    Globe,
-    Network,
-    Clock3,
-    TrendingUp,
-    BarChart3,
-    Search,
-    ClipboardCheck,
-    Wrench,
-    Settings,
-    Hotel,
-    Building,
-    Landmark,
-    Home,
-    Briefcase,
-    Smartphone,
-} from "lucide-react";
 
 const voip = {
     slug: "hotel-voip",
@@ -55,7 +32,7 @@ const voip = {
         description:
             "Modern cloud and on-premise VoIP solutions that improve guest communication, staff collaboration and hotel operations while reducing telephony costs.",
 
-        image: "/images/services/hotel-voip.webp",
+        image: "/images/hotels-2.png",
 
         breadcrumbs: [
             { label: "Home", href: "/" },

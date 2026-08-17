@@ -23,21 +23,15 @@ const services = [
     description:
       "Interactive in-room entertainment platforms integrated with your Property Management System.",
     icon: Tv,
-    href: "/services/iptv",
+    href: "/services/hotel-iptv",
   },
-  {
-    title: "Hotel Security Systems",
-    description:
-      "Integrated CCTV, access control, and surveillance solutions that protect guests, staff, and hotel assets.",
-    icon: ShieldCheck,
-    href: "/services/security",
-  },
+
   {
     title: "Managed Hotel IT Support",
     description:
       "24/7 proactive monitoring, maintenance, and technical support for your hospitality technology infrastructure.",
     icon: Wrench,
-    href: "/services/managed-support",
+    href: "/services/managed-it",
   },
 ];
 
@@ -82,7 +76,7 @@ export default function Related() {
         </div>
 
         {/* Service Cards */}
-        <div className="mt-16 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-16 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => {
             const Icon = service.icon;
 
