@@ -1,5 +1,6 @@
 import { getAllPosts, getCategories, getTags } from "@/lib/blog";
 import services from "@/data/services";
+import industries from "@/data/industries";
 
 const SITE_URL =
     process.env.NEXT_PUBLIC_SITE_URL ||
@@ -7,6 +8,10 @@ const SITE_URL =
 
 export default async function sitemap() {
     const now = new Date();
+
+    /* =====================================================
+       STATIC PAGES
+    ===================================================== */
 
     const staticPages = [
         {
@@ -25,6 +30,12 @@ export default async function sitemap() {
             url: `${ SITE_URL }/services`,
             lastModified: now,
             changeFrequency: "weekly",
+            priority: 0.9,
+        },
+        {
+            url: `${ SITE_URL }/industries`,
+            lastModified: now,
+            changeFrequency: "monthly",
             priority: 0.9,
         },
         {
@@ -59,12 +70,31 @@ export default async function sitemap() {
         },
     ];
 
+    /* =====================================================
+       SERVICE PAGES
+    ===================================================== */
+
     const servicePages = services.map((service) => ({
         url: `${ SITE_URL }/services/${ service.slug }`,
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.8,
     }));
+
+    /* =====================================================
+       INDUSTRY PAGES
+    ===================================================== */
+
+    const industryPages = industries.map((industry) => ({
+        url: `${ SITE_URL }/industries/${ industry.slug }`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.8,
+    }));
+
+    /* =====================================================
+       BLOG POSTS
+    ===================================================== */
 
     const posts = getAllPosts();
 
@@ -77,34 +107,47 @@ export default async function sitemap() {
         priority: 0.8,
     }));
 
-    const categoryPages = getCategories().map(
-        (category) => ({
-            url: `${ SITE_URL }/blog/category/${ slugify(
-                category.name
-            ) }`,
-            lastModified: now,
-            changeFrequency: "weekly",
-            priority: 0.7,
-        })
-    );
+    /* =====================================================
+       BLOG CATEGORIES
+    ===================================================== */
+
+    const categoryPages = getCategories().map((category) => ({
+        url: `${ SITE_URL }/blog/category/${ slugify(
+            category.name
+        ) }`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.7,
+    }));
+
+    /* =====================================================
+       BLOG TAGS
+    ===================================================== */
 
     const tagPages = getTags().map((tag) => ({
-        url: `${ SITE_URL }/blog/tag/${ slugify(
-            tag.name
-        ) }`,
+        url: `${ SITE_URL }/blog/tag/${ slugify(tag.name) }`,
         lastModified: now,
         changeFrequency: "weekly",
         priority: 0.6,
     }));
 
+    /* =====================================================
+       RETURN SITEMAP
+    ===================================================== */
+
     return [
         ...staticPages,
         ...servicePages,
+        ...industryPages,
         ...blogPages,
         ...categoryPages,
         ...tagPages,
     ];
 }
+
+/* =====================================================
+   SLUGIFY
+===================================================== */
 
 function slugify(value = "") {
     return value
