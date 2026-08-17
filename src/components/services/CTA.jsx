@@ -116,7 +116,7 @@ export default function CTA() {
                   </Link>
 
                   <Link
-                    href="tel:+234XXXXXXXXXX"
+                    href="tel:+2349085444555"
                     className="group flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 px-6 py-4 font-semibold text-white transition-all duration-300 hover:border-primary/40 hover:bg-white/5"
                   >
                     <Phone className="h-5 w-5 text-primary" />

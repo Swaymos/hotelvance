@@ -15,7 +15,7 @@ export const servicesCTA = ({
 
   secondaryButton = {
     text: "Call Our Team",
-    href: "tel:+2340000000000",
+    href: "tel:+2349085444555",
   },
 
   highlights = [

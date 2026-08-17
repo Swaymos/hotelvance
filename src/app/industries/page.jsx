@@ -14,6 +14,7 @@ import {
   ChevronDown,
   Sparkles,
 } from "lucide-react";
+import industries from "../../data/industries";
 
 // app/industries/page.jsx
 
@@ -79,89 +80,6 @@ export const metadata = {
     follow: true,
   },
 };
-
-const industries = [
-  {
-    title: "Hotels",
-    slug: "hotels",
-    description:
-      "Connected technology infrastructure that helps hotels deliver reliable guest experiences and operate efficiently.",
-    icon: Hotel,
-    services: [
-      "Hotel Wi-Fi",
-      "IPTV & entertainment",
-      "Fiber & GPON networks",
-      "VoIP communication",
-      "PMS integration",
-      "Managed IT support",
-    ],
-    href: "/industries/hotels",
-  },
-  {
-    title: "Resorts",
-    slug: "resorts",
-    description:
-      "Scalable connectivity and technology solutions designed for large properties, guest areas, and resort operations.",
-    icon: Waves,
-    services: [
-      "Guest Wi-Fi",
-      "Property-wide networking",
-      "IPTV systems",
-      "Fiber infrastructure",
-      "Network security",
-      "IT support",
-    ],
-    href: "/industries/resorts",
-  },
-  {
-    title: "Serviced Apartments",
-    slug: "serviced-apartments",
-    description:
-      "Reliable technology infrastructure for serviced apartments, extended-stay properties, and residential hospitality.",
-    icon: Building2,
-    services: [
-      "High-speed Wi-Fi",
-      "Fiber connectivity",
-      "IPTV",
-      "Network management",
-      "Guest support",
-      "Security",
-    ],
-    href: "/industries/serviced-apartments",
-  },
-  {
-    title: "Restaurants & Hospitality",
-    slug: "restaurants",
-    description:
-      "Connected systems that support guest connectivity, staff communication, entertainment, and daily operations.",
-    icon: Utensils,
-    services: [
-      "Business Wi-Fi",
-      "Network infrastructure",
-      "VoIP",
-      "Managed IT",
-      "Network security",
-      "Technical support",
-    ],
-    href: "/industries/restaurants",
-  },
-  {
-    title: "Corporate Hospitality",
-    slug: "corporate-hospitality",
-    description:
-      "Technology solutions for corporate accommodation, executive residences, and hospitality facilities.",
-    icon: BriefcaseBusiness,
-    services: [
-      "Enterprise Wi-Fi",
-      "Secure networking",
-      "VoIP",
-      "IT infrastructure",
-      "Network monitoring",
-      "Technical support",
-    ],
-    href: "/industries/corporate-hospitality",
-  },
-];
 
 const coreSolutions = [
   {
@@ -480,7 +398,7 @@ export default function IndustriesPage() {
                 return (
                   <Link
                     key={industry.slug}
-                    href={industry.href}
+                    href={"industries/" + industry.slug}
                     className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#58AEBC]/30 hover:bg-[#58AEBC]/[0.035] hover:shadow-2xl"
                   >
                     {/* Card Glow */}

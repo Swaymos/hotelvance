@@ -332,7 +332,7 @@ export default function Footer() {
 
           {/* Phone */}
 
-          <a href="tel:+2340000000000" className="group flex items-start gap-3">
+          <a href="tel:+2349085444555" className="group flex items-start gap-3">
             <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 text-[#58AEBC] transition group-hover:bg-[#58AEBC] group-hover:text-white">
               <Phone size={16} />
             </div>
@@ -343,7 +343,7 @@ export default function Footer() {
               </span>
 
               <span className="mt-1 block text-sm text-white/65 transition group-hover:text-white">
-                +234 (0) 000 000 0000
+                +2349085444555
               </span>
             </div>
           </a>
