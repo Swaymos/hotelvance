@@ -1,6 +1,6 @@
-import { getAllPosts, getCategories, getTags } from "@/lib/blog";
-import services from "@/data/services";
-import industries from "@/data/industries";
+import { getAllPosts, getCategories, getTags } from "../lib/blog";
+import industries from "../data/industries";
+import services from "../data/services";
 
 const SITE_URL =
     process.env.NEXT_PUBLIC_SITE_URL ||
@@ -140,8 +140,6 @@ export default async function sitemap() {
         ...servicePages,
         ...industryPages,
         ...blogPages,
-        ...categoryPages,
-        ...tagPages,
     ];
 }
 
