@@ -1,4 +1,4 @@
-import { getAllPosts, getCategories, getTags } from "../lib/blog";
+import { getAllPosts, getCategories } from "../lib/blog";
 import industries from "../data/industries";
 import services from "../data/services";
 
@@ -124,12 +124,12 @@ export default async function sitemap() {
        BLOG TAGS
     ===================================================== */
 
-    const tagPages = getTags().map((tag) => ({
-        url: `${ SITE_URL }/blog/tag/${ slugify(tag.name) }`,
-        lastModified: now,
-        changeFrequency: "weekly",
-        priority: 0.6,
-    }));
+    // const tagPages = getTags().map((tag) => ({
+    //     url: `${ SITE_URL }/blog/tag/${ slugify(tag.name) }`,
+    //     lastModified: now,
+    //     changeFrequency: "weekly",
+    //     priority: 0.6,
+    // }));
 
     /* =====================================================
        RETURN SITEMAP
@@ -140,6 +140,7 @@ export default async function sitemap() {
         ...servicePages,
         ...industryPages,
         ...blogPages,
+        ...categoryPages
     ];
 }
 
